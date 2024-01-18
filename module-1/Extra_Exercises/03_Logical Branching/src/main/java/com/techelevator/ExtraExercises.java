@@ -22,7 +22,14 @@ public class ExtraExercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+		if (aSmile == true && bSmile == true){
+			return true;
+		} else if (aSmile == false && bSmile == false){
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	/*
