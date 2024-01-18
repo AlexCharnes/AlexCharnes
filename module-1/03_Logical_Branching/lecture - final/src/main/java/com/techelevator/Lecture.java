@@ -6,7 +6,7 @@ public class Lecture {
     it so that it returns something other than a 1.
     */
     public int returnNotOne() {
-        return 1;
+        return 2;
     }
 
     /*
@@ -14,20 +14,20 @@ public class Lecture {
     it so that it returns something other than a 0.5.
     */
     public double returnNotHalf() {
-        return 0.5;
+        return 0.75;
     }
 
     /*
     3. This method needs to return a String. Fix it to return a valid String.
     */
     public String returnName() {
-        return null;
+        return "Rachelle";
     }
 
     /*
     4. This method currently returns an int. Change it so that it returns a double.
     */
-    public int returnDoubleOfTwo() {
+    public double returnDoubleOfTwo() {
         return 2;
     }
 
@@ -35,8 +35,8 @@ public class Lecture {
     5. This method should return the language that you're learning. Change
     it so that it does that.
     */
-    public boolean returnNameOfLanguage() {
-        return false;
+    public String returnNameOfLanguage() {
+        return "Java";
     }
 
     /*
@@ -45,7 +45,7 @@ public class Lecture {
     */
     public boolean returnTrueFromIf() {
         if (true) {
-            return false;
+            return true;
         }
 
         return false;
@@ -56,11 +56,13 @@ public class Lecture {
     to one. Make sure it returns true when one equals one.
     */
     public boolean returnTrueWhenOneEqualsOne() {
-        if (1 == 1) {
-            return false;
+        int x = 1;
+        boolean returnValue = false;
+        if (x == 1) {
+            returnValue = true;
         }
 
-        return false;
+        return returnValue;
     }
 
     /*
@@ -68,12 +70,13 @@ public class Lecture {
     greater than 5 and returns true if it is.
     */
     public boolean returnTrueWhenGreaterThanFive(int number) {
+        boolean isNumberGreaterThan5 = false;
         if (number > 5) {
-
+            isNumberGreaterThan5 = true;
         } else {
-
+            isNumberGreaterThan5 = false;
         }
-        return false;
+        return isNumberGreaterThan5;
     }
 
     /*
@@ -81,7 +84,7 @@ public class Lecture {
     How can we rewrite exercise 8 to have only one line of code?
     */
     public boolean returnTrueWhenGreaterThanFiveInOneLine(int number) {
-        return false; // What can we put here that returns a boolean that we want?
+        return number > 5; // What can we put here that returns a boolean that we want?
     }
 
     /*
@@ -92,13 +95,13 @@ public class Lecture {
     */
     public int returnNumberAfterAddThreeAndAddFive(int number, boolean addThree, boolean addFive) {
         if (addThree) {
-            number = number + 1;
+            number = number + 3;
         }
 
         // We can't use an else here. They could both be true, so we have to check each one.
 
         if (addFive) {
-            number += 1;
+            number += 5;
         }
 
         return number;
@@ -108,28 +111,38 @@ public class Lecture {
     11. Write an if statement that returns "Fizz" if the parameter is 3 and returns an empty String for anything else.
     */
     public String returnFizzIfThree(int number) {
-        return "";
+        if (number == 3) {
+            return "Fizz";
+        } else {
+            return "";
+        }
     }
 
     /*
     12. Now write the above using the Ternary operator ?:. If you're not sure what this is, you can Google it.
     */
     public String returnFizzIfThreeUsingTernary(int number) {
-        return "";
+        return number == 3 ? "Fizz" : "";
     }
 
     /*
     13. Write an if/else statement that returns "Fizz" if the parameter is 3, "Buzz" if the parameter is 5 and an empty String for anything else.
     */
     public String returnFizzOrBuzzOrNothing(int number) {
-        return "";
+        if (number == 5) {
+            return "Buzz";
+        } else if (number == 3) {
+            return "Fizz";
+        } else {
+            return "";
+        }
     }
 
     /*
     14. Write an if statement that checks if the parameter number is either equal to or greater than 18. Return "Adult" if it is or "Minor" if it's not.
     */
     public String returnAdultOrMinor(int number) {
-        if (true) {
+        if (number >= 18) {
             return "Adult";
         } else {
             return "Minor";
@@ -140,20 +153,41 @@ public class Lecture {
     15. Now, do it again with a different boolean opeation.
     */
     public String returnAdultOrMinorAgain(int number) {
-        if (true) {
+        if ( !(number < 18) ) {
             return "Adult";
         } else {
             return "Minor";
         }
+
+//        if ( number == 18 || number > 18 ) {
+//            return "Adult";
+//        } else {
+//            return "Minor";
+//        }
+//
+//        if ( number  > 17 ) {
+//            return "Adult";
+//        } else {
+//            return "Minor";
+//        }
+
     }
 
     /*
     16. Return as above, but also return "Teen" if the number is between 13 and 17 inclusive.
     */
     public String returnAdultOrMinorOrTeen(int number) {
-        if (true) {
+//        if (number >= 18) {
+//            return "Adult";
+//        } else if (number > 12 && number < 18) {
+//            return "Teen";
+//        } else {
+//            return "Minor";
+//        }
+
+        if (number >= 18) {
             return "Adult";
-        } else if (true) {
+        } else if (number > 12) {
             return "Teen";
         } else {
             return "Minor";
@@ -181,7 +215,30 @@ public class Lecture {
     public double returnPizzaCost(char size, int numberOfToppings) {
         // You can declare variables in methods. Declare a variable to hold the cost of the pizza.
         // Set its value based on the size. Then add the cost for the toppings and return the total cost
-        return 0.0;
+
+        // 1. Create a variable to hold the cost
+        double costOfPizza = 0;
+
+        // 2. Determine what size of pizza
+        // 3. Set the cost based the size of the pizza
+        if (size == 's') {
+            costOfPizza = SMALL;
+        } else if (size == 'm') {
+            costOfPizza = MEDIUM;
+        } else {
+            costOfPizza = LARGE;
+        }
+
+        // 4. does it have more or less than 3 toppings
+        if (numberOfToppings <= 3) {
+            // 5. If 3 or less toppings then add 1.00 per topping
+            costOfPizza = costOfPizza + (UNDER_3_TOPPINGS * numberOfToppings);
+        } else {
+            // 6. ELSE if more than 3 toppings add .75 per topping
+            costOfPizza = costOfPizza + (OVER_3_TOPPINGS * numberOfToppings);
+        }
+
+        return costOfPizza;
     }
 
 }

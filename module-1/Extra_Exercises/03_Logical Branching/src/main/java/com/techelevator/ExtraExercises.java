@@ -22,7 +22,36 @@ public class ExtraExercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+		// In trouble if both monkeys are smiling
+		if (aSmile == true && bSmile == true) {
+								return true;
+		}
+		// In trouble if neither monkey is smiling
+		if (aSmile == false && bSmile == false) {
+			return true;
+		}
+//		 Not in trouble if one monkey is smiling and the other monkey is not smiling
+//		 return are we in trouble
+
+//		if ( (aSmile == true && bSmile == true) || (aSmile == false && bSmile == false)) {
+//			return true;
+//		}
+//
+
+
+//		if (aSmile ^ bSmile == false) {
+//			return true;
+//		}
+
 		return false;
+
+//		if (aSmile ^ bSmile) {
+//			return false;
+//		}
+//
+//		return !(aSmile ^ bSmile);
+
+		//return aSmile == bSmile;
 	}
 
 	/*
