@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import org.junit.vintage.engine.discovery.IsPotentialJUnit4TestClass;
+
 public class Exercises {
 
     /**
@@ -47,7 +49,9 @@ public class Exercises {
         3. 3 raccoons are playing in the woods. 2 go home to eat dinner. How
         many raccoons are left in the woods?
         */
-
+		int raccoonsPlayingInTheWoods = 3;
+		int raccoonsEatingDinner = 2;
+		int raccoonsLeftInTheWoods = raccoonsPlayingInTheWoods - raccoonsEatingDinner;
 
         /* Exercise 4
         4. There are 5 flowers and 3 bees. How many less bees than flowers?
@@ -268,7 +272,9 @@ public class Exercises {
         39. There are 100 cupcakes for 8 children to share. How much will each
         person get if they share the cupcakes equally?
         */
-
+		double cupcakesToShare = 100;
+		int children = 8;
+		double cupcakesPerChild = cupcakesToShare / children;
 
         /* Exercise 40
         40. She made 47 gingerbread cookies which she will distribute equally in
