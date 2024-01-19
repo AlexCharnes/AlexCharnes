@@ -7,7 +7,7 @@ public class Lecture {
     */
     public int[] returnArray() {
         int[] array = { 80, 8080, 443 };
-        return null;
+        return array;
     }
 
     /*
@@ -30,14 +30,19 @@ public class Lecture {
     4. Return the first element of the array from the parameters
     */
     public int returnFirstElementOfParam(int[] passedInArray) {
-        return 1;
+        return passedInArray[0];
     }
 
     /*
     5. Return the last element of the array from the parameters
     */
     public int returnLastElementOfParam(int[] passedInArray) {
-        return 1;
+
+        for (int i = 0; i < passedInArray.length; i++) {
+            System.out.println(i);
+        }
+
+        return passedInArray[ passedInArray.length - 1 ];
     }
 
     /*
