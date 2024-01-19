@@ -86,7 +86,7 @@ public class Exercise07_StoreHours {
     public boolean isStoreOpen(int currentHour, char currentDay, boolean isSummer) {
         if (currentHour >= 8 && currentHour < 17 ){
             if (currentDay == 'M' || currentDay == 'W' || currentDay == 'F'){
-                
+
                 return true;
             }
 
