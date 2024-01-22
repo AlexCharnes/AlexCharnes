@@ -43,7 +43,11 @@ public class Exercise04_Cards {
     discardFirstCard(["K-C", "Q-D", "J-H", "10-S", "Q-C"]) → ["Q-D", "J-H", "10-S", "Q-C"]
      */
     public String[] discardFirstCard(String[] hand) {
-        return new String[] {};
+        String[] newHand = new String[4];
+        for (int i = 0; i < hand.length - 1; i++){
+            newHand[i] = hand[i + 1];
+        }
+        return newHand;
     }
 
     /*
