@@ -27,7 +27,12 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(2) → [AVAILABLE, AVAILABLE]
      */
     public boolean[] generateSeatingChart(int numberOfSeats) {
+
+
+
         boolean[] seatingChart = new boolean[numberOfSeats];
+
+
                 for ( int i = 0; i < seatingChart.length; i++){
                     seatingChart[i] = AVAILABLE;
                 };

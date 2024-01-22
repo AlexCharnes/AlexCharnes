@@ -33,11 +33,6 @@ public class Exercise03_Shirts {
         return shirtOrder;
 
 
-
-
-
-
-
     }
 
     /*
@@ -58,19 +53,32 @@ public class Exercise03_Shirts {
      */
     public char[] buildBulkOrder(int numberOfShirts) {
         char[] shirtOrder = new char[numberOfShirts];
-        //char shirtOrder[] = new char[numberOfShirts];
-//        char smallShirt = 'S';
-//        char mediumShirt = 'M';
-//        char largeShirt = 'L';
-        //for ( int i = 0; i < numberOfShirts; i++ );
-        //int i = 0;
-        for (int i = 0; i < shirtOrder.length; i++){
-        //    shirtOrder[i] = shirtOrder +
-        //    shirtOrder.get(String []shirtOrder )
-        //System.out.println(shirtOrder[i])
-            System.out.println(shirtOrder[i]);
+        char[] shirtSizes = {'S', 'M', 'L'};
+        int counter = 0;
+        for (int i = 0; i < numberOfShirts; i++){
+            shirtOrder[i] = shirtSizes[counter];
+            counter ++;
+            if ( counter == shirtSizes.length){
+                counter = 0;
+
         }
-        return shirtOrder;
+
+
+//        for (int i = 0; i < shirtOrder.length; i++) {
+//            if (shirtOrder[i] <= numberOfShirts + 1) {
+//                shirtOrder[i] = 'S';
+//            }
+//            if (shirtOrder[i] <= numberOfShirts + 1) {
+//                shirtOrder[i + 1] = 'M';
+//            }
+//            if (shirtOrder[i] <= numberOfShirts + 1) {
+//                shirtOrder[i + 2] = 'L';
+
+
+        }return shirtOrder;
+        //   System.out.println(shirtOrder[i]);
+
+
 
 
 
@@ -97,6 +105,12 @@ public class Exercise03_Shirts {
     placeRequest([]) → false
      */
     public boolean placeRequest(char[] order) {
+        boolean isSmall = true;
+        for (int i = 0; i < order.length; i++){
+            if (order[i] == 'S'){
+                return true;
+            }
+        }
         return false; 
     }
 }
