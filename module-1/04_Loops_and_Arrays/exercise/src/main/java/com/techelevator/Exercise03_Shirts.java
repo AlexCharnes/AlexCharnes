@@ -17,7 +17,27 @@ public class Exercise03_Shirts {
     buildOrder() → ['S', 'S', 'S', 'M', 'M', 'L']
      */
     public char[] buildOrder() {
-        return new char[] {};    
+        // 1. Create char array
+        // 2. Set char array with correct shirt order
+        // 3. return char array
+//        char smallShirt = 'S';
+//        char mediumShirt = 'M';
+//        char largeShirt = 'L';
+        char[] shirtOrder = new char[6];
+        shirtOrder[0] = 'S';
+        shirtOrder[1] = 'S';
+        shirtOrder[2] = 'S';
+        shirtOrder[3] = 'M';
+        shirtOrder[4] = 'M';
+        shirtOrder[5] = 'L';
+        return shirtOrder;
+
+
+
+
+
+
+
     }
 
     /*
@@ -36,8 +56,31 @@ public class Exercise03_Shirts {
     buildBulkOrder(4) → ['S', 'M', 'L', 'S']
     buildBulkOrder(0) → []
      */
-    public char[] buildBulkOrder(int numberOfShirts) { 
-        return new char[] {};    
+    public char[] buildBulkOrder(int numberOfShirts) {
+        char[] shirtOrder = new char[numberOfShirts];
+        //char shirtOrder[] = new char[numberOfShirts];
+//        char smallShirt = 'S';
+//        char mediumShirt = 'M';
+//        char largeShirt = 'L';
+        //for ( int i = 0; i < numberOfShirts; i++ );
+        //int i = 0;
+        for (int i = 0; i < shirtOrder.length; i++){
+        //    shirtOrder[i] = shirtOrder +
+        //    shirtOrder.get(String []shirtOrder )
+        //System.out.println(shirtOrder[i])
+            System.out.println(shirtOrder[i]);
+        }
+        return shirtOrder;
+
+
+
+
+
+
+
+
+
+
     }
 
     /*

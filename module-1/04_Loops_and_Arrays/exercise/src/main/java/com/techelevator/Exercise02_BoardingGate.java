@@ -27,7 +27,18 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(2) → [AVAILABLE, AVAILABLE]
      */
     public boolean[] generateSeatingChart(int numberOfSeats) {
-        return new boolean[] {};
+        boolean[] seatingChart = new boolean[numberOfSeats];
+                for ( int i = 0; i < seatingChart.length; i++){
+                    seatingChart[i] = AVAILABLE;
+                };
+
+
+        return seatingChart;
+
+
+
+        //generate seating chart using the required number of seats
+        // set initial value to true
     }
 
     /*
@@ -46,9 +57,17 @@ public class Exercise02_BoardingGate {
     getAvailableSeatCount([]) → 0
      */
     public int getAvailableSeatCount(boolean[] seatingChart) {
-        return 0;
-    }
+        int seatsAvailable = 0;
+        for (int i = 0; i < seatingChart.length; i++) {
+            if (seatingChart[i] == AVAILABLE) {
+                seatsAvailable += 1;
+            } else {
 
+            }
+
+        }
+        return seatsAvailable;
+    }
     /*
     The crew determined that it would be nice to know how many rows on the plane are at full occupancy.
     Each row has three seats and a row is at full occupancy if all three seats have someone sitting in them.
@@ -62,7 +81,14 @@ public class Exercise02_BoardingGate {
     getNumberOfFullRows([OCCUPIED, AVAILABLE, AVAILABLE, OCCUPIED, AVAILABLE, AVAILABLE]) → 0
      */
     public int getNumberOfFullRows(boolean[] seatingChart) {
-        return 0;
+        int numberOfFullRows = 0;
+        for (int i = 0; i < seatingChart.length; i += 3){
+            if (OCCUPIED == seatingChart[i] && OCCUPIED == seatingChart[i + 1] && OCCUPIED == seatingChart[i + 2]){
+                numberOfFullRows += 1;
+            }
+        }
+
+        return numberOfFullRows;
     }
 
 }

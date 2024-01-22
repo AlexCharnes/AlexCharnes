@@ -102,7 +102,7 @@ public class Exercise01_StoreOrders {
             } else if ( orders[i] == LARGE_CHEESE){
                 totalCheesePizzaRevenue += 14;
             }
-        
+
         return totalCheesePizzaRevenue;
     }
 }
