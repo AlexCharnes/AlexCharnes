@@ -10,7 +10,7 @@ public class LinearConvert {
 		double distanceInMeters = 0;
 
 		Scanner userInput = new Scanner(System.in);
-		String[] conversion = new String[2]{};
+		String[] conversion = new String[args.length];
 
 		System.out.println("Please enter the length: ");
 		String length = userInput.nextLine();
@@ -20,13 +20,13 @@ public class LinearConvert {
 
 		double lengthNumber = Double.parseDouble(length);
 
-		if (type == "m"){
-			distanceInFeet = lengthNumber * 0.3048;
-			conversion[] = length + " is " + distanceInFeet
-			System.out.println(conversion[]);
-		} else if (type == "f"){
-			distanceInMeters = lengthNumber * 3.2808399;
-			System.out.println(distanceInMeters);
+		if (type.equalsIgnoreCase("m")){
+			distanceInFeet = lengthNumber * 3.2808399;
+
+			System.out.printf("%1.0f is %1.0f", lengthNumber, distanceInFeet);
+		} else if (type.equalsIgnoreCase("f")){
+			distanceInMeters = lengthNumber * 0.3048;
+			System.out.printf("%1.0f is %1.0f", lengthNumber, distanceInMeters);
 		}
 
 
