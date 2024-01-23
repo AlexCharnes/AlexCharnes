@@ -20,7 +20,7 @@ public class Exercise04_Cards {
     Given a 5 card array, return the value of the first card.
 
     Examples:
-    getFirstCard(["3-H", "7-H", "5-H", "8-H", "6-H"]) → "3-H"
+    getFirstCard(["3-H", "7-H", "5-H", "8-H", "6-H"]) → "3-H"e
     getFirstCard(["1-C", "1-D", "1-H", "1-S", "2-C"]) → "1-C"
     getFirstCard(["K-C", "Q-D", "J-H", "10-S", "Q-C"]) → "K-C"
     */
