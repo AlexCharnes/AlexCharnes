@@ -243,7 +243,30 @@ public class Exercises {
 	 frontTimes("Abc", 3) → "AbcAbcAbc"
 	 */
 	public String frontTimes(String str, int n) {
-		return null;
+
+		/*
+			1. Get the length of the String
+			2. make sure string is 3 characters or longer
+			3. If shorter than 3 then keep as is
+			4. pull the first 3 characters out of the string
+			5. for loop that runs n times
+			6. concatenate it each loop
+			7. After the for loop return it
+		 */
+		String newString = "";
+		String strStart = "";
+		int lengthOfString = str.length();
+		if (lengthOfString <= 3) {
+			strStart = str;
+		} else {
+			strStart = str.substring(0, 3);
+		}
+
+		for (int i = 0; i < n; i++) {
+			newString += strStart;
+		}
+
+		return newString;
 	}
 
 	/*
