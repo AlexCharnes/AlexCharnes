@@ -9,7 +9,7 @@ public class Exercises {
 	 helloName("X") → "Hello X!"
 	 */
 	public String helloName(String name) {
-		String greeting =  ("Hello " + name + "!");
+		String greeting = ("Hello " + name + "!");
 		return greeting;
 	}
 
@@ -21,7 +21,7 @@ public class Exercises {
 	 makeAbba("What", "Up") → "WhatUpUpWhat"
 	 */
 	public String makeAbba(String a, String b) {
-		return  a + b + b + a;
+		return a + b + b + a;
 	}
 
 	/*
@@ -33,7 +33,7 @@ public class Exercises {
 	 makeTags("cite", "Yay") → "<cite>Yay</cite>"
 	 */
 	public String makeTags(String tag, String word) {
-		return "<" + tag + ">"  + word + "</" + tag + ">";
+		return "<" + tag + ">" + word + "</" + tag + ">";
 	}
 
 	/*
@@ -45,7 +45,7 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
-		return out.substring(0,2) + word + out.substring(2,4);
+		return out.substring(0, 2) + word + out.substring(2, 4);
 	}
 
 	/*
@@ -63,8 +63,8 @@ public class Exercises {
 		// 5. return new string
 		String newString = "";
 		String substring = str.substring(Math.max(str.length() - 2, 0));
-		for ( int i = 0; i <= 2; i++){
-		newString += substring;
+		for (int i = 0; i <= 2; i++) {
+			newString += substring;
 		}
 
 		return newString;
@@ -86,7 +86,7 @@ public class Exercises {
 		// 5. return new string
 		String newString = "";
 		int lengthOfString = str.length();
-		if (lengthOfString >= 2){
+		if (lengthOfString >= 2) {
 			newString = newString + str.charAt(0) + str.charAt(1);
 		} else {
 			newString = str;
@@ -125,7 +125,7 @@ public class Exercises {
 		String newString = "";
 //		String firstLetter = str.substring(0,1);
 //		String lastLetter = str.substring(str.length()-1);
-		newString = str.substring(1,str.length() -1);
+		newString = str.substring(1, str.length() - 1);
 		return newString;
 	}
 
@@ -141,7 +141,7 @@ public class Exercises {
 		String newString = "";
 		int aLength = a.length();
 		int bLength = b.length();
-		if (aLength > bLength){
+		if (aLength > bLength) {
 			newString = b + a + b;
 		} else {
 			newString = a + b + a;
@@ -171,7 +171,7 @@ public class Exercises {
 	 */
 	public String left2(String str) {
 		String newString = "";
-		newString = str.substring(2) + str.substring(0,2);
+		newString = str.substring(2) + str.substring(0, 2);
 		return newString;
 	}
 
@@ -184,7 +184,7 @@ public class Exercises {
 	 */
 	public String right2(String str) {
 		String newString = "";
-		newString = str.substring(str.length() -2) + str.substring(0, str.length() - 2);
+		newString = str.substring(str.length() - 2) + str.substring(0, str.length() - 2);
 		return newString;
 	}
 
@@ -200,8 +200,8 @@ public class Exercises {
 		// 2. if front = true, return first char
 		// 2. if front = false, return last char
 		String newString = "";
-		if ( front == true){
-			newString = str.substring(0,1);
+		if (front == true) {
+			newString = str.substring(0, 1);
 		} else {
 			newString = str.substring(str.length() - 1);
 		}
@@ -219,8 +219,8 @@ public class Exercises {
 		String newString = "";
 		int length = str.length();
 
-		if (length >= 2){
-			newString = str.substring(1,str.length() -1);
+		if (length >= 2) {
+			newString = str.substring(1, str.length() - 1);
 		} else {
 			newString = "";
 		}
@@ -236,7 +236,7 @@ public class Exercises {
 	 */
 	public String middleTwo(String str) {
 		String newString = "";
-		newString = str.substring((str. length()-1)/2, str. length()/2 + 1);
+		newString = str.substring((str.length() - 1) / 2, str.length() / 2 + 1);
 		return newString;
 	}
 
@@ -248,14 +248,19 @@ public class Exercises {
 	 */
 	public boolean endsLy(String str) {
 		boolean endsWithLy = false;
-		if (str.substring(str.length() - 2).equals("ly")) {
+		int strLength = str.length();
+		if (strLength > 1) {
+			if (str.substring(str.length() - 2).equals("ly")) {
+				endsWithLy = true;
+			} else {
+				endsWithLy = false;
+			}
 
-
-			return endsWithLy = true;
-		} else {
-			return endsWithLy = false;
 		}
+		return endsWithLy;
+
 	}
+
 	/*
 	 Given a string and an int n, return a string made of the first and last n chars from the string. The
 	 string length will be at least n.
@@ -264,7 +269,9 @@ public class Exercises {
 	 nTwice("Chocolate", 1) → "Ce"
 	 */
 	public String nTwice(String str, int n) {
-		return "";
+		String newString = "";
+		newString = str.substring(0,n) + str.substring(str.length()-n);
+		return newString;
 	}
 
 	/*
@@ -299,6 +306,16 @@ public class Exercises {
 	 hasBad("xxbadxx") → false
 	 */
 	public boolean hasBad(String str) {
+		boolean badStart = false;
+		if (str.length() < 3){
+			return false;
+		}
+		if (str.substring(0,3).equals("bad")){
+			return true;
+		}
+		if (str.substring(1,4).equals("bad")){
+			return true;
+		}
 		return false;
 	}
 
@@ -309,7 +326,9 @@ public class Exercises {
 	 stringTimes("Hi", 1) → "Hi"
 	 */
 	public String stringTimes(String str, int n) {
-		return null;
+		String newString = "";
+		newString = str.repeat(n);
+		return newString;
 	}
 
 	/*
@@ -348,6 +367,7 @@ public class Exercises {
 	 countXX("xxxx") → 3
 	 */
 	public int countXX(String str) {
+
 		return 0;
 	}
 
@@ -358,6 +378,8 @@ public class Exercises {
 	 doubleX("xxxxx") → true
 	 */
 	public boolean doubleX(String str) {
+		boolean hasX = true;
+		if (str.equals("x"));
 		return false;
 	}
 
@@ -368,7 +390,11 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String newString = "";
+		for (int i = 0; i < str.length(); i += 2){
+			newString += str.charAt(i);
+		}
+		return newString;
 	}
 
 	/*
@@ -378,6 +404,14 @@ public class Exercises {
 	 stringSplosion("ab") → "aab"
 	 */
 	public String stringSplosion(String str) {
+		String newString = "";
+		int strLength = str.length();
+		while (int i < str.Length()){
+			if (str.length() > 1 ){
+				newString += str.charAt(i);
+			}
+
+		}
 		return null;
 	}
 
@@ -427,8 +461,13 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		String newStr = str;
-		return "";
+		String newString = "";
+		if (str.contains("yak")){
+			newString = str.replace("yak", "");
+		}else {
+			newString = str;
+		}
+		return newString;
 	}
 
 }
