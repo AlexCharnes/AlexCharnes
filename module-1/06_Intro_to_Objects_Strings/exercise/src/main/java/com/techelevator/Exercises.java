@@ -379,7 +379,9 @@ public class Exercises {
 	 */
 	public boolean doubleX(String str) {
 		boolean hasX = true;
-		if (str.equals("x"));
+		if (str.equals("xx")){
+			return true;
+		};
 		return false;
 	}
 
@@ -406,13 +408,8 @@ public class Exercises {
 	public String stringSplosion(String str) {
 		String newString = "";
 		int strLength = str.length();
-		while (int i < str.Length()){
-			if (str.length() > 1 ){
-				newString += str.charAt(i);
-			}
 
-		}
-		return null;
+		return "";
 	}
 
 	/*

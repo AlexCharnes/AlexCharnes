@@ -78,7 +78,29 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+
+		// 1. create boolean variable - true when there is two or more
+		// 2. create a count variable - count how many times intToFind appears on the list
+		// 3. loop over integer list.
+		// 4. if intToFind is found in list +1 to counter
+		// 5. check if counter is 2 if it is break the loop
+		// 6. set boolean to true if counter is 2
+		// 7. return boolean
+
+		boolean isFoundTwice = false;
+		int counter = 0;
+
+		for (int currentNumber : integerList){
+			if ( currentNumber == intToFind){
+				counter += 1;
+			} if ( counter ==2){
+				break;
+			}
+		}
+		if (counter >= 2){
+			isFoundTwice = true;
+		}
+		return isFoundTwice;
 	}
 
 	/*
