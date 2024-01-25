@@ -26,9 +26,9 @@ public class Lecture_Set {
             LinkedHasSet - orders data by maintaining the order the items where added to the Set
             TreeSet - orders data in the natural order for the Data Type  (numeric 0-9, strings 0-9A-Z)
          */
-        Set<Integer> setOfNumbers = new HashSet<Integer>();
+        //Set<Integer> setOfNumbers = new HashSet<Integer>();
         //Set<Integer> setOfNumbers = new LinkedHashSet<Integer>();
-        //Set<Integer> setOfNumbers = new TreeSet<Integer>();
+        Set<Integer> setOfNumbers = new TreeSet<Integer>();
 
         // Elements are added to the Set with add()
         setOfNumbers.add(1);
