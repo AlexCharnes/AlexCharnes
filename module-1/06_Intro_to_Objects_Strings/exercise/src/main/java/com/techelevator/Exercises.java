@@ -484,11 +484,22 @@ public class Exercises {
         public String stringX (String str){
             String newString = "";
             for (int i = 0; i < str.length(); i++){
-                if (str.contains("x")){
-                    if (str.substring(0,1) == "x" || str.substring(str.length() -1) == "x"){
+                if (str.contains("x") && str.length() > 1){
+                    if (str.startsWith("x") || str.endsWith("x")){
                         newString = "x" + str.substring(1,str.length() - 1).replace("x", "") + "x";
+//                        newString.startsWith("x");
+//                        newString.endsWith("x");
                     }
                     else {
+                        newString = str.replace("x", "");
+                    }
+                }
+                else if (str.startsWith("x")){
+                    newString = "x";
+
+                }
+                else {
+                    {
                         newString = str.replace("x", "");
                     }
                 }
