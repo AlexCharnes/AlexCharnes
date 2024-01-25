@@ -40,12 +40,15 @@ public class Exercises {
      no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
      */
     public List<String> no4LetterWords(String[] stringArray) {
-		//List<String> newArray = ArrayList<String>();
+		List<String> newArray = new ArrayList<>();
 		String four = new String();
         for (int i = 0; i < stringArray.length; i++) {
+            if (stringArray[i].length() > 4 || stringArray[i].length() < 4) {
+                newArray.add(stringArray[i]);
+            }
 
         }
-        return null;
+        return newArray;
     }
 
     /*
@@ -55,7 +58,13 @@ public class Exercises {
      arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
      */
     public List<Double> arrayInt2ListDouble(int[] intArray) {
-        return null;
+        List<Double> half = new ArrayList<Double>();
+        for (int currentInt : intArray){
+            double newValue = currentInt / 2.0;
+            half.add(newValue);
+        }
+
+        return half;
     }
 
     /*
