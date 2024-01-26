@@ -52,7 +52,7 @@ public class Exercises {
         for (Map.Entry<String, String> currentAnimal : newMap.entrySet()) {
             if (currentAnimal.getKey().equals(animalName)) {
 
-                newString += newMap.get(animalName);
+                return newMap.get(animalName);
 
 
             }
