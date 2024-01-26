@@ -1,9 +1,6 @@
 package com.techelevator;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MapProblems {
     public static void main(String[] args) {
@@ -28,7 +25,26 @@ public class MapProblems {
 			C2: Dog Treats
 			C3: Squirrel Treats
 		 */
+        Map<String, String> treats = new TreeMap<>();
 
+        //assign the variables
+        treats.put("A1", "Candy Bar");
+        treats.put("A2", "Nut Bar");
+        treats.put("A3", "Bag of Chocolates");
+        treats.put("B1", "Potato Chips");
+        treats.put("B2", "Pretzels");
+        treats.put("B3", "Nutter Butters");
+        treats.put("C1", "Cat Treats");
+        treats.put("C2", "Dog Treats");
+        treats.put("C3", "Squirrel Treats");
+
+        // Display the codes and an items like a menu
+
+        for (Map.Entry<String, String> treat : treats.entrySet()) {
+            String code = treat.getKey();
+            String name = treat.getValue();
+            System.out.println(code + ") " + name);
+        }
 
 
         System.out.println();
@@ -46,6 +62,11 @@ public class MapProblems {
         accounts.put("Anya", 100d);
         accounts.put("Bob", 200d);
 
+        double transferMoney = 50;
+
+        accounts.put("Bob", 150d);
+        accounts.put("Anya", 150d);
+        System.out.println("The value of Anya's acount is " + accounts.get("Anya"));
 
 
         System.out.println();
@@ -56,8 +77,17 @@ public class MapProblems {
 		/*
 			Given the following List count how many times each name appears in the list
 		 */
-        List<String> names = Arrays.asList(new String[]{"Rachelle", "John", "Rachelle", "Steve", "Dan", "Matt", "John", "Matt", "Rachelle", "Steve", "John", "Rachelle", "Rachelle" });
-
+        List<String> names = Arrays.asList(new String[]{"Rachelle", "John", "Rachelle", "Steve", "Dan", "Matt", "John", "Matt", "Rachelle", "Steve", "John", "Rachelle", "Rachelle"});
+        int counter = 0;
+        Map<String, Integer> nameCount = new HashMap<String, Integer>();
+        for (String name : names) {
+            if (nameCount.containsKey(name)) {
+                nameCount.put(name, nameCount.get(name) + 1);
+            } else {
+                nameCount.put(name, 1);
+            }
+        }
+        System.out.println(nameCount);
 
 
         System.out.println();
@@ -76,27 +106,50 @@ public class MapProblems {
         studentGradesByIds.put(13, 48);
         studentGradesByIds.put(14, 88);
 
+        int idWithHighestScore = -1;
+        int idWithLowestScore = -1;
+        int currentHighestScore = 0;
+        int currentLowestScore = 100;
+
+        for (Map.Entry<Integer, Integer> thisStudent : studentGradesByIds.entrySet()) {
+            if (thisStudent.getValue() > currentHighestScore) {
+                currentHighestScore = thisStudent.getValue();
+                idWithHighestScore = thisStudent.getKey();
+            }
+            if (thisStudent.getValue() < currentLowestScore) {
+                currentLowestScore = thisStudent.getValue();
+                idWithLowestScore = thisStudent.getKey();
+            }
+            System.out.println("The student with the lowest score is " + idWithLowestScore);
+            System.out.println("The student with the highest score is " + idWithHighestScore);
 
 
-
-        System.out.println();
-        System.out.println("####################");
-        System.out.println("     Problem 5     ");
-        System.out.println("####################");
-        System.out.println();
+            System.out.println();
+            System.out.println("####################");
+            System.out.println("     Problem 5     ");
+            System.out.println("####################");
+            System.out.println();
 		/*
 			Given the following map.  Replace all the null values with the word "default"
 		 */
-        Map<Integer, String> myMap = new HashMap<Integer, String>();
+            Map<Integer, String> myMap = new HashMap<Integer, String>();
 
-        myMap.put(1, "abc");
-        myMap.put(2, null);
-        myMap.put(3, null);
-        myMap.put(4, "def");
-        myMap.put(5, "null");
-        myMap.put(6, null);
-        myMap.put(7, "ghi");
-        myMap.put(8, "jkl");
+            myMap.put(1, "abc");
+            myMap.put(2, null);
+            myMap.put(3, null);
+            myMap.put(4, "def");
+            myMap.put(5, "null");
+            myMap.put(6, null);
+            myMap.put(7, "ghi");
+            myMap.put(8, "jkl");
 
+            for (Map.Entry<Integer, String> currentEntry : myMap.entrySet()){
+                if (currentEntry.getValue() == null){
+                    myMap.put(currentEntry.getKey(), "default");
+                }
+            }
+            System.out.println(myMap.entrySet());
+
+        }
     }
 }
