@@ -3,6 +3,7 @@ package com.techelevator;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Exercises {
@@ -36,7 +37,8 @@ public class Exercises {
      *
      */
     public String animalGroupName(String animalName) {
-        String newString = "";
+
+
         Map<String, String> newMap = new HashMap<String, String>();
         newMap.put("rhino", "Crash");
         newMap.put("giraffe", "Tower");
@@ -49,15 +51,20 @@ public class Exercises {
         newMap.put("dog", "Pack");
         newMap.put("crocodile", "Float");
 
-        for (Map.Entry<String, String> currentAnimal : newMap.entrySet()) {
-            if (currentAnimal.getKey().equals(animalName)) {
-
-                return newMap.get(animalName);
-
-
-            }
+        //Set<String> animalName = newMap.keySet();
+        if (animalName == null) {
+            return "unknown";
         }
-        return newString;
+
+        String animal = newMap.get(animalName.toLowerCase());
+        if (animal == null) {
+
+            return "unknown";
+
+
+        } else {
+            return animal;
+        }
 
 
     }
@@ -86,8 +93,36 @@ public class Exercises {
      *
      */
     public double isItOnSale(String itemNumber) {
-        return -1.0;
+
+        Map<String, Double> newMap = new HashMap<String, Double>();
+        double ifNotOnSale = 0;
+
+        if (itemNumber == null || itemNumber.equals("")) {
+            return 0.00;
+        }
+        if ( newMap.equals(ifNotOnSale)){
+            return 0.00;
+        }
+
+        newMap.put("KITCHEN4001", .20);
+        newMap.put("GARAGE1070", .15);
+        newMap.put("LIVINGROOM", .10);
+        newMap.put("KITCHEN6073", .40);
+        newMap.put("BEDROOM3434", .60);
+        newMap.put("BATH0073", .15);
+
+
+        double number = newMap.get(itemNumber.toUpperCase());
+
+        if (newMap.equals(itemNumber)) {
+            newMap.get(number);
+        }
+        return number;
+
+
     }
+
+
 
     /*
      * Modify and return the given Map as follows: if "Peter" has more than 0 money, transfer half of it to "Paul",
