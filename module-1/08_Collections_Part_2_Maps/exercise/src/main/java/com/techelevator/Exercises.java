@@ -160,7 +160,26 @@ public class Exercises {
      *
      */
     public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-        return null;
+        Map<String, Integer> newMap = new HashMap<>();
+        int petersMoney = peterPaul.get("Peter");
+        int paulsMoney = peterPaul.get("Paul");
+        int quarterPetersMoney = petersMoney / 4;
+        int quarterPaulsMoney = paulsMoney / 4;
+        int combinedMoney = quarterPetersMoney + quarterPaulsMoney;
+        if (petersMoney >= 5000 && paulsMoney >= 10000){
+            petersMoney = petersMoney - quarterPetersMoney;
+            paulsMoney = paulsMoney - quarterPaulsMoney;
+            newMap.put("Peter", petersMoney);
+            newMap.put("Paul", paulsMoney);
+            newMap.put("PeterPaulPartnership", combinedMoney);
+            return newMap;
+
+        } else {
+            newMap.put("Peter", petersMoney);
+            newMap.put("Paul", paulsMoney);
+            //newMap.put("PeterPaulPartnership", combinedMoney);
+        }
+        return newMap;
     }
 
     /*
