@@ -3,8 +3,8 @@
 ## Instance variables
 
 | Attribute                            | Data Type | Get | Set | Description                                     |
-| ------------------------------------ | --------- | --- | --- | ----------------------------------------------- |
-| routeName                            | String    | X   |     | The route name of the bus.                      |
+| ------------------------------------ | --------- | --- |-----| ----------------------------------------------- |
+| routeName                            | String    | X   | X   | The route name of the bus.                      |
 | passengers                           | int       | X   |     | The total number of passengers on the bus.      |
 | gallonsOfGas                         | int       | X   |     | The number of gallons of gas the bus has.       |
 | isDoorOpen                           | boolean   | X   |     | Determines if the door is open or closed.       |
