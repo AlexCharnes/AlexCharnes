@@ -95,14 +95,7 @@ public class Exercises {
     public double isItOnSale(String itemNumber) {
 
         Map<String, Double> newMap = new HashMap<String, Double>();
-        double ifNotOnSale = 0;
-
-        if (itemNumber == null || itemNumber.equals("")) {
-            return 0.00;
-        }
-        if ( newMap.equals(ifNotOnSale)){
-            return 0.00;
-        }
+        //double ifNotOnSale = 0;
 
         newMap.put("KITCHEN4001", .20);
         newMap.put("GARAGE1070", .15);
@@ -112,12 +105,16 @@ public class Exercises {
         newMap.put("BATH0073", .15);
 
 
-        double number = newMap.get(itemNumber.toUpperCase());
 
-        if (newMap.equals(itemNumber)) {
-            newMap.get(number);
+        if (itemNumber == null) {
+            return 0.00;
         }
-        return number;
+        String number = itemNumber.toUpperCase();
+        if (!newMap.containsKey(number)){
+            return 0.00;
+        }
+
+        return newMap.get(number);
 
 
     }
@@ -137,7 +134,20 @@ public class Exercises {
      *
      */
     public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-        return null;
+
+        Map<String, Integer> newMap = new HashMap<>();
+
+        int petersMoney = peterPaul.get("Peter");
+        int paulsMoney = peterPaul.get("Paul");
+        int halfMoney = petersMoney /2;
+
+    if (petersMoney > 0 && paulsMoney < 1000){
+        petersMoney = petersMoney - halfMoney;
+        paulsMoney = paulsMoney + halfMoney;
+    }
+    newMap.put("Peter", petersMoney);
+    newMap.put("Paul", paulsMoney);
+        return newMap;
     }
 
     /*
