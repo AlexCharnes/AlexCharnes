@@ -25,6 +25,7 @@ public class Auction {
 		return isCurrentWinningBid;
 	}
 
+
 	public Bid getHighBid() {
 		return currentHighBid;
 	}
