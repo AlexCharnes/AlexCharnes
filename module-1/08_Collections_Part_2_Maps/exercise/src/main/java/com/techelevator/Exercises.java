@@ -210,7 +210,21 @@ public class Exercises {
      *
      */
     public Map<String, Integer> wordCount(String[] words) {
-        return null;
+        Map<String, Integer> wordCounts = new HashMap<>();
+        for (String word : words){
+            if (wordCounts.containsKey(word)){
+                wordCounts.put(word, wordCounts.get(word) + 1);
+
+
+            } else {
+                wordCounts.put(word, 1);
+            }
+
+        }
+        return wordCounts;
+
+
+
     }
 
     /*
@@ -225,7 +239,18 @@ public class Exercises {
      *
      */
     public Map<Integer, Integer> integerCount(int[] ints) {
-        return null;
+        Map<Integer, Integer> intCounts = new HashMap<>();
+        for (int number : ints){
+            if (intCounts.containsKey(number)){
+                intCounts.put(number, intCounts.get(number) + 1);
+
+
+            } else {
+                intCounts.put(number, 1);
+            }
+
+        }
+        return intCounts;
     }
 
     /*

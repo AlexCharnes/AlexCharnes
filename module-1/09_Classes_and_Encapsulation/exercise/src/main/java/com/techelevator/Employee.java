@@ -10,5 +10,5 @@ public class Employee {
     private String letterGrade;
 
 
-    Public Employee()
+    //Public Employee();
 }
