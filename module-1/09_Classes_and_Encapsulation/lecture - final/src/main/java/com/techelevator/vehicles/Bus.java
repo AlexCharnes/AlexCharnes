@@ -12,6 +12,8 @@ public class Bus {
     private int gallonsOfGas = 50;
     private boolean isDoorOpen = false;
 
+
+
     /*
         Constructor is a special method that instantiates the class into an object.  It is
         always named the same as the class and never has a return type.
