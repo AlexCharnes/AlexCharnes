@@ -263,7 +263,19 @@ public class Exercises {
      *
      */
     public Map<String, Boolean> wordMultiple(String[] words) {
-        return null;
+        Map<String, Boolean> wordCounts = new HashMap<>();
+        for (String word : words){
+            if (wordCounts.containsKey(word)){
+                wordCounts.put(word, true);
+
+
+            } else {
+                wordCounts.put(word, false);
+            }
+
+        }
+        return wordCounts;
+
     }
 
     /*
@@ -278,7 +290,16 @@ public class Exercises {
      */
     public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse,
                                                      Map<String, Integer> remoteWarehouse) {
-        return null;
+        for (Map.Entry<String, Integer> currentEntry : mainWarehouse.entrySet()){
+            String key = currentEntry.getKey();
+            int value = currentEntry.getValue();
+            if (remoteWarehouse.containsKey(key)){
+                remoteWarehouse.put(key, value + remoteWarehouse.get(key));
+            } else {
+                remoteWarehouse.put(key, value);
+            }
+        }
+        return remoteWarehouse;
     }
 
     /*
