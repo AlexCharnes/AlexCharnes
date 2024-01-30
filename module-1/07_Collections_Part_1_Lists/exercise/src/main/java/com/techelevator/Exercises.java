@@ -74,8 +74,22 @@ public class Exercises {
      findLargest( [-2, -6, -8] ) -> -2
      */
     public Integer findLargest(List<Integer> integerList) {
-        return null;
-    }
+
+        int largestInt = -100;
+
+        for (int currentInt : integerList){
+
+            if (currentInt > largestInt){
+                largestInt = currentInt;
+            }
+            }
+        return largestInt;
+        }
+
+
+
+
+
 
     /*
      Given an array of Integers, return a List of Integers containing just the odd values.
@@ -84,7 +98,13 @@ public class Exercises {
      oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
      */
     public List<Integer> oddOnly(Integer[] integerArray) {
-        return null;
+        List<Integer> oddInt = new ArrayList<>();
+        for (int currentInt : integerArray){
+            if (currentInt % 2 == 1 || currentInt % 2 == -1){
+                oddInt.add(currentInt);
+            }
+        }
+        return oddInt;
     }
 
     /*
@@ -134,7 +154,28 @@ public class Exercises {
     HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
      */
     public List<String> fizzBuzzList(Integer[] integerArray) {
-        return null;
+        List<String> fizzBuzz = new ArrayList<>();
+
+        for (int currentInt : integerArray){
+            if (currentInt % 3 == 0 && currentInt % 5 ==0){
+                fizzBuzz.add("FizzBuzz");
+                //fizzBuzz.remove(currentInt);
+            }
+            else if (currentInt % 5 == 0){
+                fizzBuzz.add("Buzz");
+                //fizzBuzz.remove(currentInt);
+
+            }
+            else if (currentInt % 3 == 0){
+            fizzBuzz.add("Fizz");
+                //fizzBuzz.remove(currentInt);
+            }
+            else {
+                String intToString = Integer.toString(currentInt);
+                fizzBuzz.add(intToString);
+            }
+        }
+        return fizzBuzz;
     }
 
     /*
@@ -147,7 +188,30 @@ public class Exercises {
      interleaveLists( [1, 2, 5, 8, 10], [4, 5, 6] )  ->  [1, 4, 2, 5, 5, 6, 8, 10]
      */
     public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-        return null;
+
+        List<Integer> interWoven = new ArrayList<>();
+        int lengthListOne = listOne.size();
+        int lengthListTwo = listTwo.size();
+
+
+        int longestLength;
+        if ( lengthListOne > lengthListTwo){
+            longestLength = lengthListOne;
+        }else {
+            longestLength = lengthListTwo;
+        }
+
+        for ( int i = 0; i < longestLength; i++){
+            if ( i < lengthListOne){
+                interWoven.add(listOne.get(i));
+            }
+            if ( i < lengthListTwo){
+                interWoven.add(listTwo.get(i));
+            }
+
+
+        }
+        return interWoven;
     }
 
 }
