@@ -23,7 +23,7 @@ public class HomeworkAssignment {
     }
 
     public String getLetterGrade() {
-        String letterGrade;
+        //String letterGrade;
         double score = (double) earnedMarks / possibleMarks;
         if (score >= .9) {
             return "A";
