@@ -1,19 +1,24 @@
 package com.techelevator;
 
 public class CreditCardAccount implements Accountable{
-
+// constructor
     public int getBalance(){
-        return getBalance();
-    };
+        return -debt;
+    }
+    public CreditCardAccount(String accountHolderName, String cardNumber){
+        this.accountHolderName = accountHolderName;
+        this.cardNumber = cardNumber;
 
-    String accountHolderName;
+    }
+// variables
+    private String accountHolderName;
 
-    String cardNumber;
+    private String cardNumber;
 
-    int debt;
+    private int debt;
 
-    int balance;
 
+// gets and sets
     public String getAccountHolderName() {
         return accountHolderName;
     }
@@ -27,12 +32,21 @@ public class CreditCardAccount implements Accountable{
     }
 
 
-    public CreditCardAccount(String accountHolderName, String cardNumber){
-        this.accountHolderName = accountHolderName;
-        this.cardNumber = cardNumber;
+    //methods
 
-    }
     public int pay(int amountToPay){
-return 2;
+        if (amountToPay > 0){
+            debt = debt - amountToPay;
+        }
+        return debt;
     }
+
+    public int charge(int amountToCharge){
+        if ( amountToCharge > 0){
+            debt = debt + amountToCharge;
+        }
+        return debt;
+    }
+
+
 }
