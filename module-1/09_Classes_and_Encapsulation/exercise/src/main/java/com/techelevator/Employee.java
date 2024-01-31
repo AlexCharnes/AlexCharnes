@@ -1,14 +1,65 @@
 package com.techelevator;
 
 public class Employee {
-    private int earnedMarks;
+    private int employeeId;
 
-    private int possibleMarks;
+    private String firstName;
 
-    private String submitterName;
+    private String lastName;
 
-    private String letterGrade;
+    private String fullName;
+
+    private String department;
+
+    private double annualSalary;
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public double getAnnualSalary() {
+        return annualSalary;
+    }
+
+    public Employee(int employeeId, String firstName, String lastName, double annualSalary){
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = lastName + ", " + firstName;
+        this.department = department;
+        this.annualSalary = annualSalary;
+
+    }
+
+    public void raiseSalary(double percent){
+        annualSalary = (annualSalary * percent) / 100 + annualSalary;
+
+    }
 
 
-    //Public Employee();
+//Public Employee();
 }
