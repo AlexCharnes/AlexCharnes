@@ -1,7 +1,11 @@
 package com.techelevator.temart;
 
 
+import com.techelevator.temart.inventory.Inventory;
+import com.techelevator.temart.inventory.Product;
 import com.techelevator.temart.view.Menu;
+
+import java.util.Map;
 
 public class TEMartApplication {
 
@@ -19,6 +23,17 @@ public class TEMartApplication {
 
     public void run() {
 
+        Inventory inventory = new Inventory();
+
+        menu.showWelcomeScreen();
+
+        Map<String, Product> products = inventory.getProducts();
+
+        String selectedSku = menu.showProducts(products);
+
+        Product selectedProduct = inventory.getProductBySku(selectedSku);
+
+        menu.showOneProduct( selectedProduct );
     }
 
 }
