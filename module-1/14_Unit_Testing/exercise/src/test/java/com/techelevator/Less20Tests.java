@@ -22,6 +22,21 @@ public class Less20Tests {
 
     @Test
     public void returns_true_if_variable_is_1_or_2_less_then_multiple_of_twenty(){
-        Assert.assertTrue(target.isLessThanMultipleOf20(19)), true);
+        Assert.assertTrue(target.isLessThanMultipleOf20(19));
+    }
+
+    @Test
+    public void returns_false_if_variable_is_1_or_2_more_then_multiple_of_twenty(){
+        Assert.assertFalse(target.isLessThanMultipleOf20(22));
+    }
+
+    @Test
+    public void returns_false_if_variable_is_more_then_2_over_the_multiple_of_twenty(){
+        Assert.assertFalse(target.isLessThanMultipleOf20(16));
+    }
+
+    @Test
+    public void returns_false_if_variable_is_a_multiple_of_twenty(){
+        Assert.assertFalse(target.isLessThanMultipleOf20(20));
     }
 }
