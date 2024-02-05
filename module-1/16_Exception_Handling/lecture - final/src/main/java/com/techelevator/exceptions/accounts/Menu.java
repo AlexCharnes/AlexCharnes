@@ -12,10 +12,17 @@ public class Menu {
 
     public int getAmountFromUser() {
 
-        System.out.print("Amount to withdraw >>> ");
-        String userInput = in.nextLine();
+        int amount = 0;
+        while (amount == 0) {
+            System.out.print("Amount to withdraw >>> ");
+            String userInput = in.nextLine();
 
-        int amount = Integer.parseInt(userInput);
+            try {
+                amount = Integer.parseInt(userInput);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid amount");
+            }
+        }
 
         return amount;
 
@@ -30,6 +37,8 @@ public class Menu {
         System.out.println(amount + " was withdrawn");
     }
 
-
+    public void showFeeException(BelowMiniumBalanceException e) {
+        System.out.println(e.getMessage());
+    }
 
 }
