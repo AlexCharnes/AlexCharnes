@@ -1,0 +1,2 @@
+This is our first line of buffered text
+This is the second line
