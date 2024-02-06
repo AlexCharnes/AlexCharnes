@@ -9,23 +9,27 @@ public class ExceptionStackExamples {
 
     public static void main(String[] args) {
         System.out.println("main method start");
-//        try {
+        try {
             methodA();
+        } catch (NullPointerException e) {
+            System.out.println("String was null");
+        }
+        System.out.println("main method end");
+    }
+    private static void methodA() {
+        System.out.println("methodA start");
+//        try {
+            methodB();
 //        } catch (NullPointerException e) {
 //            System.out.println("String was null");
 //        }
-        System.out.println("main method end");
-    }
-
-
-    private static void methodA() {
-        System.out.println("methodA start");
-        methodB();
         System.out.println("methodA end");
     }
 
     private static void methodB() {
         System.out.println("methodB start");
+//        int[] arr = {1,2,3};
+//        int x = arr[5];
         methodC();
         System.out.println("methodB end");
     }
@@ -37,8 +41,8 @@ public class ExceptionStackExamples {
      */
     private static void methodC() {
         System.out.println("methodC start");
-//        String str = null;
-//        str.toUpperCase();
+        String str = null;
+        str.toUpperCase();
         System.out.println("methodC end");
     }
 

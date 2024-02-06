@@ -11,14 +11,25 @@ public class TypesOfExceptions {
 
     private String str;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         new TypesOfExceptions().run();
     }
 
-    public void run() {
-        //throwsARuntimeException();
+    public void run()  {
 
-        //throwsACheckedException();
+        try {
+            throwsARuntimeException();
+        } catch (NullPointerException e) {
+            System.out.println("An error occurred");
+        }
+
+
+        try {
+            throwsACheckedException();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     /*
