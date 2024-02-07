@@ -44,4 +44,8 @@ public class Menu {
         System.out.println("Total Cost: $" + product.getTotalCostWithShipping());
 
     }
+
+    public void tellUserFileNotFound() {
+        System.out.println("The Inventory file was not found.  Exiting program.");
+    }
 }
