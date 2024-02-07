@@ -11,7 +11,8 @@ public class HotelReservation {
     Scanner scanner = new Scanner(new File("HotelInput.csv") {
 
     });
-    List<String> customers = new ArrayList<>(){};
+    List<String> customers = new ArrayList<String>(){};
+
     private String name;
     // indicates the name on the reservation.
 
