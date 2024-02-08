@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +23,8 @@ public class FizzWriterTest {
         }
         System.setIn(new ByteArrayInputStream(DEST_FILE_PATH.getBytes()));
     }
+
+
 
     /**
      * The destination file should have a total of 300 lines

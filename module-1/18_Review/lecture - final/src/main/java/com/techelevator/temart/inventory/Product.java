@@ -1,5 +1,7 @@
 package com.techelevator.temart.inventory;
 
+import java.util.Objects;
+
 public abstract class Product {
     private final static double BASE_SHIPPING_COST = 2.50;
     private String sku;
@@ -96,5 +98,21 @@ public abstract class Product {
 
     public void setTaxable(boolean taxable) {
         isTaxable = taxable;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 && weightInLbs == product.weightInLbs
+                && isPerishable == product.isPerishable && isTaxable == product.isTaxable
+                && Objects.equals(sku, product.sku) && Objects.equals(name, product.name)
+                && Objects.equals(description, product.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sku, name, price, weightInLbs, description, isPerishable, isTaxable);
     }
 }

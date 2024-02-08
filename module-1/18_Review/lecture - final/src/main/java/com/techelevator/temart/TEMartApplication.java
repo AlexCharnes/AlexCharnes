@@ -1,10 +1,13 @@
 package com.techelevator.temart;
 
 
+import com.techelevator.temart.inventory.FileInventory;
 import com.techelevator.temart.inventory.Inventory;
+import com.techelevator.temart.inventory.MemoryInventory;
 import com.techelevator.temart.inventory.Product;
 import com.techelevator.temart.view.Menu;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 public class TEMartApplication {
@@ -23,7 +26,14 @@ public class TEMartApplication {
 
     public void run() {
 
-        Inventory inventory = new Inventory();
+   //     Inventory inventory = new MemoryInventory();
+        Inventory inventory = null;
+        try {
+            inventory = new FileInventory("inventory.csv");
+        } catch (FileNotFoundException e) {
+           menu.tellUserFileNotFound();
+           return;
+        }
 
         menu.showWelcomeScreen();
 
