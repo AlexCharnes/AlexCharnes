@@ -4,9 +4,10 @@
 -- Order the results alphabetically by state abbreviation and then by city name.
 -- (20 rows)
 
-SELECT city_name, COUNT(population)
+SELECT population, (city_name  || ', ' || state_abbreviation) AS name_and_state
 FROM city
-Where (SELECT state_abbreviation
-FROM state
-WHERE state_abbreviation IN ('PA', 'WV', 'KY', 'IN', 'MI'));
+WHERE state_abbreviation IN ('PA', 'WV', 'KY', 'IN', 'MI')
+	
+ORDER BY state_abbreviation, city_name;
+
 
