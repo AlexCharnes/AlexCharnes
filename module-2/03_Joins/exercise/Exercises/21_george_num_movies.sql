@@ -6,10 +6,10 @@
 -- TIP: This one can be a little tricky. If you're off by one, look closer at each clause of 
 -- your statement. There's something you can change to get a different result set.
 
-SELECT DISTINCT person_name, COUNT(title) AS num_of_movies
+SELECT person_name, COUNT(title) AS num_of_movies
 FROM person
 LEFT JOIN movie_actor ON movie_actor.actor_id = person.person_id
 LEFT JOIN movie ON movie.movie_id = movie_actor.movie_id
-WHERE person_name ILIKE 'george%' 
-GROUP BY person_name
+WHERE person_name ILIKE 'george %' 
+GROUP BY person_id
 ORDER BY person_name;
