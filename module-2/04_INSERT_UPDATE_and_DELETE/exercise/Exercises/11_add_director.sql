@@ -11,4 +11,5 @@ UPDATE movie
 SET director_id = 3984923
 WHERE title = 'The Blob';
 
+
 COMMIT;
