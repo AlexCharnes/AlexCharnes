@@ -2,7 +2,6 @@
 -- Add yourself to the person table, and assign yourself as the director of "The Blob" 
 -- (the movie is already in the movie table). (1 record each)
 
-START TRANSACTION;
 
 INSERT INTO person(person_name)
 VALUES ('Alex Charnes');
@@ -12,4 +11,3 @@ SET director_id = 3984923
 WHERE title = 'The Blob';
 
 
-COMMIT;
