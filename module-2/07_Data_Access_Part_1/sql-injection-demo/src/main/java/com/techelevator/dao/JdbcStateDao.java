@@ -46,8 +46,8 @@ public class JdbcStateDao implements StateDao {
     public List<State> getStatesByName(String stateName) {
         List<State> states = new ArrayList<>();
 
-        String sql = "SELECT state_abbreviation, state_name FROM state WHERE state_name LIKE " + "'%" + stateName + "%";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql );
+        String sql = "SELECT state_abbreviation, state_name FROM state WHERE state_name LIKE ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateName );
 
         while (results.next()) {
             State state = mapRowToState(results);

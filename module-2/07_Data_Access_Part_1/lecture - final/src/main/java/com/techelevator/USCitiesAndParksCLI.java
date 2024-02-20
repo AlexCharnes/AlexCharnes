@@ -33,7 +33,7 @@ public class USCitiesAndParksCLI {
         stateDao = new JdbcStateDao(dataSource);
         cityDao = new JdbcCityDao(dataSource);
         // cityDao = new MemoryCityDao();
-        parkDao = new JdbcParkDao();
+        parkDao = new JdbcParkDao(dataSource);
     }
 
     private void run() {
