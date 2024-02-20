@@ -7,7 +7,6 @@ INSERT INTO person(person_name)
 VALUES ('Alex Charnes');
 
 UPDATE movie 
-SET director_id = 3984923
+SET director_id = (SELECT person_id FROM person WHERE person_name = 'Alex Charnes')
 WHERE title = 'The Blob';
-
 
