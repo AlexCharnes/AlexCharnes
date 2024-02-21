@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Park;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -10,6 +12,13 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    SELECT - queryForRowSet()
+    INSERT with RETURNING - queryForObject()
+    INSERT without RETURNING - update()
+    UPDATE - update()
+    DELETE - update()
+ */
 public class JdbcParkDao implements ParkDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -22,10 +31,14 @@ public class JdbcParkDao implements ParkDao {
     public int getParkCount() {
         int parkCount = 0;
         String sql = "SELECT COUNT(*) AS count FROM park;";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		if (results.next()) {
-			parkCount = results.getInt("count");
-		} 
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            if (results.next()) {
+                parkCount = results.getInt("count");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Cannot connect to database.", e);
+        }
         return parkCount;
     }
     
@@ -94,22 +107,76 @@ public class JdbcParkDao implements ParkDao {
 
     @Override
     public Park createPark(Park park) {
-        throw new DaoException("createPark() not implemented");
+        String sql = "INSERT INTO park (park_name, date_established, area, has_camping) " +
+                "VALUES (?, ?, ?, ?) RETURNING park_id;";
+        try {
+            int newParkId = jdbcTemplate.queryForObject(sql, int.class, park.getParkName(), park.getDateEstablished(),
+                    park.getArea(), park.getHasCamping());
+            park.setParkId(newParkId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database.", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Cannot have duplicate values.", e);
+        }
+
+        return park;
     }
 
     @Override
     public Park updatePark(Park park) {
-        throw new DaoException("updatePark() not implemented");
+        String sql = "UPDATE park " +
+                "SET park_name = ?, date_established = ?, area = ?, has_camping = ? " +
+                "WHERE park_id = ?";
+
+        try {
+            int numberOfRowsChanged = jdbcTemplate.update(sql, park.getParkName(), park.getDateEstablished(),
+                    park.getArea(), park.getHasCamping(), park.getParkId());
+
+            if (numberOfRowsChanged == 0) {
+                throw new DaoException("Zero rows affected, expected at least one");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database.", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violated", e);
+        }
+
+
+        return park;
     }
 
     @Override
     public int deleteParkById(int parkId) {
-        throw new DaoException("deleteParkById() not implemented");
+        String sqlToDeleteParkFromParkState = "DELETE FROM park_state WHERE park_id = ?";
+        String sqlToDeletePark = "DELETE FROM park WHERE park_id = ?";
+        int countOfParksDeleted = 0;
+
+        try {
+            jdbcTemplate.update(sqlToDeleteParkFromParkState, parkId);
+            countOfParksDeleted = jdbcTemplate.update(sqlToDeletePark, parkId);
+
+            if (countOfParksDeleted != 1) {
+                throw new DaoException(countOfParksDeleted + " parks where deleted, but should have only been one!");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database.", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Park needs to be removed from Park State", e);
+        }
+
+        return countOfParksDeleted;
     }
 
     @Override
     public void linkParkState(int parkId, String stateAbbreviation) {
-        throw new DaoException("linkParkState() not implemented");
+        String sql = "INSERT INTO park_state (park_id, state_abbreviation) VALUES (?, ?)";
+        try {
+            jdbcTemplate.update(sql, parkId, stateAbbreviation);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database.", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Park can only be in each state one time.", e);
+        }
     }
 
     private Park mapRowToPark(SqlRowSet rowSet) {
