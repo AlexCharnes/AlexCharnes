@@ -25,11 +25,18 @@ public class JdbcCityDaoTests extends BaseDaoTests {
 
     @Test
     public void getCityById_with_valid_id_returns_correct_city() {
+        // Arrange (Setup)
+
+        // Act
         City city = sut.getCityById(1);
+        // Assert
         assertCitiesMatch(CITY_1, city);
 
+        // Act
         city = sut.getCityById(2);
+        // Assert
         assertCitiesMatch(CITY_2, city);
+
     }
 
     @Test
