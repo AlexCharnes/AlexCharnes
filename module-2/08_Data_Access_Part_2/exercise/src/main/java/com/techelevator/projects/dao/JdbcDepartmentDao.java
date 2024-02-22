@@ -29,10 +29,13 @@ public class JdbcDepartmentDao implements DepartmentDao {
 		String sql = DEPARTMENT_SELECT +
 				" WHERE d.department_id=?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-		if (results.next()) {
-			department = mapRowToDepartment(results);
-		}
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+			if (results.next()) {
+				department = mapRowToDepartment(results);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);}
 
 		return department;
 	}
@@ -42,9 +45,13 @@ public class JdbcDepartmentDao implements DepartmentDao {
 		List<Department> departments = new ArrayList<>();
 		String sql = DEPARTMENT_SELECT;
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			departments.add(mapRowToDepartment(results));
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				departments.add(mapRowToDepartment(results));
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 		
 		return departments;
@@ -52,7 +59,21 @@ public class JdbcDepartmentDao implements DepartmentDao {
 
 	@Override
 	public Department createDepartment(Department department) {
-		throw new DaoException("createDepartment() not implemented");
+		Department newDepartment = null;
+		String sql = "INSERT INTO department (name)" +
+				"VALUES(?) RETURNING department_id";
+		try{
+			int newDepartmentId = jdbcTemplate.queryForObject(sql,int.class, department.getName());
+			newDepartment = getDepartmentById((newDepartmentId));
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Data integrity violation", e);
+		}
+
+		return newDepartment;
+
+
 	}
 
 	@Override

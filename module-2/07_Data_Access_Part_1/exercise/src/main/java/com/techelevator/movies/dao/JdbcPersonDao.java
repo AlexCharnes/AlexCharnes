@@ -71,7 +71,7 @@ public class JdbcPersonDao implements PersonDao {
     @Override
     public List<Person> getPersonsByCollectionName(String collectionName, boolean useWildCard) {
         List<Person> person = new ArrayList<>();
-        String sql = "SELECT person_id, person_name, birthday, deathday, biography, profile_path, person.home_page FROM person JOIN movie_actor ON person.person_id = movie_actor.actor_id JOIN movie ON movie_actor.movie_id = movie.movie_id JOIN collection ON movie.collection_id = collection.collection_id ";
+        String sql = "SELECT DISTINCT person_id, person_name, birthday, deathday, biography, profile_path, person.home_page FROM person JOIN movie_actor ON person.person_id = movie_actor.actor_id JOIN movie ON movie_actor.movie_id = movie.movie_id JOIN collection ON movie.collection_id = collection.collection_id ";
 
         if (useWildCard){
             sql += "WHERE collection_name ILIKE ? ;";

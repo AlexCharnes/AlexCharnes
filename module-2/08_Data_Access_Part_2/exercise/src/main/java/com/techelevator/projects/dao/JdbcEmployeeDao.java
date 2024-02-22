@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.techelevator.projects.model.Department;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,10 +30,13 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		Employee employee = null;
 		String sql = EMPLOYEE_SELECT +
 				" WHERE e.employee_id=?";
-
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-		if (results.next()) {
-			employee = mapRowToEmployee(results);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+			if (results.next()) {
+				employee = mapRowToEmployee(results);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return employee;
@@ -43,10 +47,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		List<Employee> allEmployees = new ArrayList<>();
 		String sql = EMPLOYEE_SELECT;
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return allEmployees;
@@ -58,10 +66,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		String sql = EMPLOYEE_SELECT +
 				" WHERE e.first_name ILIKE ? AND e.last_name ILIKE ?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + firstName + "%", "%" + lastName + "%");
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + firstName + "%", "%" + lastName + "%");
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return allEmployees;
@@ -74,10 +86,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 				"JOIN project_employee pe ON e.employee_id = pe.employee_id " +
 				"WHERE pe.project_id = ?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return allEmployees;
@@ -89,10 +105,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		String sql = EMPLOYEE_SELECT +
 				" WHERE e.employee_id NOT IN (SELECT DISTINCT employee_id FROM project_employee)";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return allEmployees;
@@ -100,7 +120,20 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
 	@Override
 	public Employee createEmployee(Employee employee) {
-		throw new DaoException("createEmployee() not implemented");
+		Employee newEmployee = null;
+		String sql = "INSERT INTO employee (department_id, first_name, last_name, birth_date, hire_date)" +
+				"VALUES(?, ?, ?, ?, ?) RETURNING employee_id";
+		try{
+			int newEmployeeId = jdbcTemplate.queryForObject(sql,int.class, employee.getDepartmentId(), employee.getFirstName(),
+					employee.getLastName(), employee.getBirthDate(), employee.getHireDate());
+			newEmployee = getEmployeeById((newEmployeeId));
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Data integrity violation", e);
+		}
+
+		return newEmployee;
 	}
 	
 	@Override

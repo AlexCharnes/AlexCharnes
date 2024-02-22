@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.techelevator.projects.model.Employee;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,9 +30,13 @@ public class JdbcProjectDao implements ProjectDao {
 		String sql = PROJECT_SELECT +
 				" WHERE p.project_id=?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
-		if (results.next()) {
-			project = mapRowToProject(results);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+			if (results.next()) {
+				project = mapRowToProject(results);
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return project;
@@ -42,18 +47,34 @@ public class JdbcProjectDao implements ProjectDao {
 		List<Project> allProjects = new ArrayList<>();
 		String sql = PROJECT_SELECT;
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Project projectResult = mapRowToProject(results);
-			allProjects.add(projectResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				Project projectResult = mapRowToProject(results);
+				allProjects.add(projectResult);
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
 		}
 
 		return allProjects;
 	}
 
 	@Override
-	public Project createProject(Project newProject) {
-		throw new DaoException("createProject() not implemented");
+	public Project createProject(Project project) {
+		Project newProject = null;
+		String sql = "INSERT INTO project (name, from_date, to_date)" +
+				"VALUES(?, ?, ?) RETURNING project_id";
+		try{
+			int newProjectId = jdbcTemplate.queryForObject(sql,int.class, project.getName(), project.getFromDate(), project.getToDate());
+			newProject = getProjectById(newProjectId);
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Data integrity violation", e);
+		}
+
+		return newProject;
 	}
 	
 	@Override
