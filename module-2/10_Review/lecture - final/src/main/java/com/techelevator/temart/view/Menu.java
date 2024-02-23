@@ -48,4 +48,14 @@ public class Menu {
     public void tellUserFileNotFound() {
         System.out.println("The Inventory file was not found.  Exiting program.");
     }
+
+    public String getTypeOfInventoryFromUser() {
+        System.out.println("Where should the inventory load from?  ");
+        System.out.println("M) Literal Values in Memory");
+        System.out.println("F) Inventory File");
+        System.out.println("D) Database");
+        String userSelection = in.nextLine();
+        //TODO: Validate user selection
+        return userSelection;
+    }
 }

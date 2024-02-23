@@ -27,6 +27,16 @@ public abstract class Product {
         this.description = "";
     }
 
+    public Product(String sku, String name, double price, int weightInLbs, String description, boolean isPerishable, boolean isTaxable) {
+        this.sku = sku;
+        this.name = name;
+        this.price = price;
+        this.weightInLbs = weightInLbs;
+        this.description = description;
+        this.isPerishable = isPerishable;
+        this.isTaxable = isTaxable;
+    }
+
     public double getShippingCost() {
         double shippingCost = BASE_SHIPPING_COST;
 

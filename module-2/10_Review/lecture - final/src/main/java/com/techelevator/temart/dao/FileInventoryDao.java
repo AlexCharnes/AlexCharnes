@@ -1,17 +1,18 @@
-package com.techelevator.temart.inventory;
+package com.techelevator.temart.dao;
+
+import com.techelevator.temart.inventory.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class FileInventory implements Inventory {
+public class FileInventoryDao implements InventoryDao {
 
     private Map<String, Product> products = new LinkedHashMap<>();
 
-    public FileInventory(String inventoryFileName) throws FileNotFoundException {
+    public FileInventoryDao(String inventoryFileName) throws FileNotFoundException {
         stockInventory(inventoryFileName);
     }
 

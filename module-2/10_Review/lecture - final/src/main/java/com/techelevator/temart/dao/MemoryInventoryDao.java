@@ -1,13 +1,15 @@
-package com.techelevator.temart.inventory;
+package com.techelevator.temart.dao;
+
+import com.techelevator.temart.inventory.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemoryInventory implements Inventory {
+public class MemoryInventoryDao implements InventoryDao {
 
     private Map<String, Product> products = new HashMap<String, Product>();
 
-    public MemoryInventory() {
+    public MemoryInventoryDao() {
         stockInventory();
     }
     private void stockInventory() {
