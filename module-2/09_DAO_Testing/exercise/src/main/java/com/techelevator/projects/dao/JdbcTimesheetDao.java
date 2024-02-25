@@ -47,7 +47,7 @@ public class JdbcTimesheetDao implements TimesheetDao {
                 "ORDER BY timesheet_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
-            if (results.next()) {
+            while (results.next()) {
                 Timesheet timesheet = mapRowToTimesheet(results);
                 timesheets.add(timesheet);
             }
@@ -82,31 +82,33 @@ public class JdbcTimesheetDao implements TimesheetDao {
 
     @Override
     public Timesheet createTimesheet(Timesheet newTimesheet) {
-        int newId;
-        String sql = "INSERT INTO timesheet (employee_id, project_id, date_worked, hours_worked, billable, description) " +
+        Timesheet timesheet = null;
+
+        String sql = "INSERT INTO timesheet (project_id, employee_id, date_worked, hours_worked, billable, description) " +
                 "VALUES (?, ?, ?, ?, ?, ?) RETURNING timesheet_id;";
         try {
-            newId = jdbcTemplate.queryForObject(sql, int.class, newTimesheet.getEmployeeId(), newTimesheet.getProjectId(),
+            int newId = jdbcTemplate.queryForObject(sql, int.class, newTimesheet.getProjectId(), newTimesheet.getEmployeeId(),
                     newTimesheet.getDateWorked(), newTimesheet.getHoursWorked(), newTimesheet.isBillable(),
                     newTimesheet.getDescription());
+            timesheet = getTimesheetById(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
-        return getTimesheetById(newId);
+        return timesheet;
     }
 
     @Override
     public Timesheet updateTimesheet(Timesheet timesheet) {
         Timesheet updatedTimesheet = null;
         String sql = "UPDATE timesheet " +
-                "SET employee_id = ?, project_id = ?, date_worked = ?, hours_worked = ?, description = ? " +
+                "SET employee_id = ?, project_id = ?, date_worked = ?, hours_worked = ?, is_billable = ?, description = ? " +
                 "WHERE timesheet_id = ?";
         try {
             int rowsAffected = jdbcTemplate.update(sql, timesheet.getEmployeeId(), timesheet.getProjectId(),
-                    timesheet.getDateWorked(), timesheet.getHoursWorked(),
-                    timesheet.getDescription(), timesheet.getTimesheetId());
+                    timesheet.getDateWorked(), timesheet.getHoursWorked(), timesheet.isBillable() ? 1 : 0,
+                    timesheet.getDescription());
 
             if (rowsAffected == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");

@@ -11,13 +11,13 @@ How did you fix this bug? updated the parameter on this method to project_if fro
 
 Bug 2
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: public void getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee()
 
-Expected output:
+Expected output: 2
 
-Actual output:
+Actual output: 1
 
-How did you fix this bug?
+How did you fix this bug? I changed the if statement to a while statement on line 50
 
 
 Bug 3

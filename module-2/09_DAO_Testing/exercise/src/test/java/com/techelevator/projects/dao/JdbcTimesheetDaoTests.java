@@ -51,7 +51,7 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
     public void getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee() {
         List<Timesheet> timesheet = dao.getTimesheetsByEmployeeId(1);
         Assert.assertEquals(2, timesheet.size());
-        assertTimesheetsMatch(TIMESHEET_1, timesheet.get(1));
+        assertTimesheetsMatch(TIMESHEET_1, timesheet.get(0));
         
     }
 
@@ -97,7 +97,22 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     @Test
     public void updateTimesheet_updates_timesheet() {
-        Assert.fail();
+
+        Timesheet timesheetToUpdate = dao.getTimesheetById(1);
+
+        timesheetToUpdate.setEmployeeId(25);
+        timesheetToUpdate.setProjectId(26);
+        timesheetToUpdate.setDateWorked(LocalDate.parse("2022-01-01"));
+        timesheetToUpdate.setHoursWorked(999);
+        timesheetToUpdate.setBillable(true);
+        timesheetToUpdate.setDescription("This is a test");
+
+        Timesheet updatedTimesheet = dao.updateTimesheet(timesheetToUpdate);
+        Assert.assertNotNull(updatedTimesheet);
+
+        Timesheet retrievedTimesheet = dao.getTimesheetById(1);
+        assertTimesheetsMatch(updatedTimesheet, retrievedTimesheet);
+
     }
 
     @Test
