@@ -1,9 +1,12 @@
 package com.techelevator.projects.dao;
 
+import com.techelevator.projects.exception.DaoException;
 import com.techelevator.projects.model.Timesheet;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,6 +25,7 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
             LocalDate.parse("2021-02-01"), 2.0, false, "Timesheet 4");
 
     private JdbcTimesheetDao dao;
+    private Timesheet testTimesheet;
 
 
     @Before
@@ -31,37 +35,64 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     @Test
     public void getTimesheetById_with_valid_id_returns_correct_timesheet() {
-        Assert.fail();
+        Timesheet timesheet = dao.getTimesheetById(1);
+        assertTimesheetsMatch(TIMESHEET_1, timesheet);
+
     }
 
     @Test
     public void getTimesheetById_with_invalid_id_returns_null_timesheet() {
-        Assert.fail();
+        Timesheet timesheet = dao.getTimesheetById(99);
+        Assert.assertNull(timesheet);
+
     }
 
     @Test
     public void getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee() {
-        Assert.fail();
+        List<Timesheet> timesheet = dao.getTimesheetsByEmployeeId(1);
+        Assert.assertEquals(2, timesheet.size());
+        assertTimesheetsMatch(TIMESHEET_1, timesheet.get(1));
+        
     }
 
     @Test
     public void getTimesheetsByEmployeeId_with_invalid_employee_id_returns_empty_list_of_timesheets() {
-        Assert.fail();
+        List<Timesheet> timesheets = dao.getTimesheetsByEmployeeId(99);
+        Assert.assertEquals(0, timesheets.size());
+
     }
 
     @Test
     public void getTimesheetsByProjectId_with_valid_project_id_returns_list_of_all_timesheets_for_project() {
-        Assert.fail();
+        List<Timesheet> timesheets = dao.getTimesheetsByProjectId(1);
+        Assert.assertEquals(3, timesheets.size());
+        assertTimesheetsMatch(TIMESHEET_1, timesheets.get(0));
+        assertTimesheetsMatch(TIMESHEET_2, timesheets.get(1));
+
+        timesheets = dao.getTimesheetsByProjectId(2);
+        Assert.assertEquals(1, timesheets.size());
+        assertTimesheetsMatch(TIMESHEET_4, timesheets.get(0));
+
     }
 
     @Test
     public void getTimesheetsByProjectId_with_invalid_project_id_returns_empty_list_of_timesheets() {
-        Assert.fail();
+        List<Timesheet> timesheets = dao.getTimesheetsByProjectId(99);
+        Assert.assertEquals(0, timesheets.size());
+
     }
 
     @Test
     public void createTimesheet_creates_timesheet() {
-        Assert.fail();
+        Timesheet createdTimesheet = dao.createTimesheet(testTimesheet);
+        Assert.assertNotNull(createdTimesheet);
+
+        int newId = createdTimesheet.getTimesheetId();
+        Assert.assertTrue(newId > 0);
+
+        Timesheet retrievedTimesheet = dao.getTimesheetById(newId);
+        assertTimesheetsMatch(createdTimesheet, retrievedTimesheet);
+
     }
 
     @Test

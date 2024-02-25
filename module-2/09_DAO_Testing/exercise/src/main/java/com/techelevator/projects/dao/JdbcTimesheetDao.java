@@ -64,7 +64,7 @@ public class JdbcTimesheetDao implements TimesheetDao {
         List<Timesheet> timesheets = new ArrayList<>();
         String sql = "SELECT timesheet_id, employee_id, project_id, date_worked, hours_worked, billable, description " +
                 "FROM timesheet " +
-                "WHERE employee_id = ? " +
+                "WHERE project_id = ? " +
                 "ORDER BY timesheet_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);

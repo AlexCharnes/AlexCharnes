@@ -138,18 +138,65 @@ public class JdbcEmployeeDao implements EmployeeDao {
 	
 	@Override
 	public Employee updateEmployee(Employee employee) {
-		throw new DaoException("updateEmployee() not implemented");
+		Employee updatedEmployee = null;
+		String sql = "UPDATE employee SET department_id = ?, first_name = ?, last_name = ?, birth_date = ?, hire_date = ? " +
+				"WHERE employee_id = ? ";
+
+		try{
+			int numberOfRows = jdbcTemplate.update(sql, employee.getDepartmentId(), employee.getFirstName(), employee.getLastName(),
+					employee.getBirthDate(), employee.getHireDate(), employee.getId());
+
+			if (numberOfRows == 0){
+				throw new DaoException("Zero rows returned, expected at least one");
+			} else{
+				updatedEmployee = getEmployeeById(employee.getId());
+			}
+		}catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Data integrity violation", e);
+		}
+		return updatedEmployee;
 	}
 
 	@Override
 	public int deleteEmployeeById(int id) {
-		throw new DaoException("deleteEmployeeById() not implemented");
+		String sqlToDeleteFromProjectEmployee = "DELETE FROM project_employee WHERE employee_id = ?";
+		String sqlToDeleteFromEmployee = "DELETE FROM employee WHERE employee_id = ?";
+		int numberOfRows = 0;
+
+		try{
+			jdbcTemplate.update(sqlToDeleteFromProjectEmployee, id);
+			numberOfRows = jdbcTemplate.update(sqlToDeleteFromEmployee, id);
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to database.", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Employee needs to be deleted from project employee", e);
+		}
+		return numberOfRows;
 	}
 
 	@Override
 	public int deleteEmployeesByDepartmentId(int departmentId) {
-		throw new DaoException("deleteEmployeeByDepartmentId() not implemented");
-	}
+
+		String sqlToUpdateFromDepartment = "UPDATE department SET department_id = 0 WHERE department_id = ?";
+		String sqlToDeleteFromEmployee = "DELETE FROM employee WHERE department_id = ?";
+		int countOfEmployeesDeleted = 0;
+
+		try{
+			jdbcTemplate.update(sqlToUpdateFromDepartment, departmentId);
+			countOfEmployeesDeleted = jdbcTemplate.update(sqlToDeleteFromEmployee, departmentId);
+
+			} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to database.", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Employee needs to be deleted from project employee", e);
+		}
+		return countOfEmployeesDeleted;
+		}
+
+
+
 
 	private Employee mapRowToEmployee(SqlRowSet result) {
 		Employee employee = new Employee();
