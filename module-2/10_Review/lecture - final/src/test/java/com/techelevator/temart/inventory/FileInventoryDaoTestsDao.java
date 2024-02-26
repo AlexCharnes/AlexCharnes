@@ -1,19 +1,21 @@
 package com.techelevator.temart.inventory;
 
+import com.techelevator.temart.dao.FileInventoryDao;
+import com.techelevator.temart.dao.InventoryDao;
 import org.junit.*;
 
 import java.io.FileNotFoundException;
 import java.util.Map;
 
-public class FileInventoryTests {
+public class FileInventoryDaoTestsDao {
 
     private static final String INVENTORY_CSV_FILEPATH = "inventory.csv";
-    private Inventory fileInventory;
+    private InventoryDao fileInventory;
     private Product testGroceryProduct;
 
     @Before
     public void setup() throws FileNotFoundException {
-        fileInventory = new FileInventory(INVENTORY_CSV_FILEPATH);
+        fileInventory = new FileInventoryDao(INVENTORY_CSV_FILEPATH);
         testGroceryProduct = new Grocery("C02");
         testGroceryProduct.setName("Soup");
         testGroceryProduct.setDescription("This is a lot of soup");
@@ -26,7 +28,7 @@ public class FileInventoryTests {
 
         // Test (Act)
         try {
-            Inventory fileInventory = new FileInventory(INVENTORY_CSV_FILEPATH);
+            InventoryDao fileInventory = new FileInventoryDao(INVENTORY_CSV_FILEPATH);
         } catch (FileNotFoundException e) {
             Assert.fail("Inventory file not found");
         }
