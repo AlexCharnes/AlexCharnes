@@ -11,6 +11,7 @@ public class AuctionService {
 
 
     public Auction[] getAllAuctions() {
+        
         // call api here
         return null;
     }
