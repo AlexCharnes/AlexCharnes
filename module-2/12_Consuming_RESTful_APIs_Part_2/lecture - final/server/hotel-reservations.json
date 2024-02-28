@@ -137,6 +137,14 @@
       "checkinDate": "2024-04-15",
       "checkoutDate": "2024-04-21",
       "guests": 4
+    },
+    {
+      "hotelId": 1,
+      "fullName": "Rachelle Rauh",
+      "checkinDate": "2024-28-02",
+      "checkoutDate": "2024-05-03",
+      "guests": 3,
+      "id": 707
     }
   ]
 }
