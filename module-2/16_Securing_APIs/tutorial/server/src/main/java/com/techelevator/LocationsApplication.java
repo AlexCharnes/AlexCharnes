@@ -1,14 +1,13 @@
-package com.techelevator.reservations;
+package com.techelevator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HotelReservationsApplication {
+public class LocationsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HotelReservationsApplication.class, args);
+        SpringApplication.run(LocationsApplication.class, args);
     }
-
 
 }

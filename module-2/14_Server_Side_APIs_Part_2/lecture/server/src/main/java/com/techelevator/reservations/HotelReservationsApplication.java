@@ -10,5 +10,4 @@ public class HotelReservationsApplication {
         SpringApplication.run(HotelReservationsApplication.class, args);
     }
 
-
 }
