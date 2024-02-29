@@ -27,9 +27,22 @@ public class AuctionService {
     }
 
     public boolean delete(int auctionId) {
+        RestTemplate restTemplate = new RestTemplate();
+        boolean isSuccessful = false;
+
+        try {
+            restTemplate.delete(API_BASE_URL + "/" + auctionId);
+            isSuccessful = true;
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("Cannot connect to server");
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(e.getRawStatusCode() + " : " + e.getMessage());
+        }
         // place code here
-        return false;
+        return isSuccessful;
     }
+
+
 
     public Auction[] getAllAuctions() {
         Auction[] auctions = null;
