@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -100,7 +101,34 @@ public class HotelController {
      */
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/reservations", method = RequestMethod.POST)
-    public Reservation addReservation(@RequestBody Reservation reservation) {
+    public Reservation addReservation(@Valid @RequestBody Reservation reservation) {
         return reservationDao.createReservation(reservation);
     }
+
+    @RequestMapping(path="/reservations/{id}", method=RequestMethod.PUT)
+    public Reservation update(@Valid @RequestBody Reservation reservation, @PathVariable("id") int reservationId) {
+
+        if (reservation.getId() != reservationId) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservation Id does not match");
+        }
+
+        Reservation existingReservation = reservationDao.getReservationById(reservationId);
+        if (existingReservation == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Reservation Not Found");
+        }
+        reservationDao.updateReservation(reservation);
+        return reservation;
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path="/reservations/{id}", method=RequestMethod.DELETE)
+    public void delete(@PathVariable("id") int reservationId) {
+        Reservation existingReservation = reservationDao.getReservationById(reservationId);
+        if (existingReservation == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Reservation Not Found");
+        }
+        reservationDao.deleteReservationById(reservationId);
+    }
+
+
 }
