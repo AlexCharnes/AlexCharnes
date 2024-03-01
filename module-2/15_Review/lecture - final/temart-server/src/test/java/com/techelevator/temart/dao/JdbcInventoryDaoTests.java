@@ -39,5 +39,11 @@ public class JdbcInventoryDaoTests extends BaseDaoTests {
         Assert.assertTrue("Does not contain Book Product 2", actualProducts.contains( BOOK_PRODUCT_2 ) );
     }
 
+    @Test
+    public void get_product_by_sku() {
+        Product acutalProduct = dao.getProductBySku(CLOTHING_PRODUCT_1.getSku());
+        Assert.assertEquals(CLOTHING_PRODUCT_1, acutalProduct);
+    }
+
 
 }

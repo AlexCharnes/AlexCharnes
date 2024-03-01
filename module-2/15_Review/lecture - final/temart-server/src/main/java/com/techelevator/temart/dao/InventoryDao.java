@@ -8,4 +8,7 @@ import java.util.List;
 public interface InventoryDao {
 
     public List<Product> getAllProducts();
+
+    Product getProductBySku(String sku);
+
 }

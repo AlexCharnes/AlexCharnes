@@ -3,6 +3,7 @@ package com.techelevator.temart.services;
 
 import com.techelevator.temart.model.Product;
 import com.techelevator.temart.model.UserCredentials;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -94,7 +95,30 @@ public class ConsoleService {
     }
 
 
+    public void ShowAllProducts(List<Product> products) {
+        displayProductsHeader();
+        for (Product product: products) {
+            displaySingleProductLine(product);
+        }
+    }
 
+    public void ShowSingleProduct(Product product) {
+        displayProductsHeader();
+        displaySingleProductLine(product);
+    }
+
+    public String getSkuFromUser() {
+        System.out.print("Select product by sku >>>");
+        return scanner.nextLine();
+    }
+
+    public void productNotFound(String sku) {
+        System.out.println("Product was not found for sku " + sku);
+    }
+
+    public void errorResponse(RestClientResponseException e) {
+        System.out.println(e.getRawStatusCode() + " : " + e.getStatusText());
+    }
 
     private void displaySingleProductLine(Product product) {
         System.out.printf("%-10s %-15s %-25s $%-7.2f%n", product.getSku(), product.getProductType(),
