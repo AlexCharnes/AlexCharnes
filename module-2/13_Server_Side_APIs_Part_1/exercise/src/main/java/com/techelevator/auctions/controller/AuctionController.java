@@ -18,8 +18,25 @@ public class AuctionController {
     }
 
 
-    @RequestMapping(path = "/locations", method = RequestMethod.GET)
+
+    @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Auction> list() {
-        return locations;
+        return auctionDao.getAuctions();
     }
+
+    @RequestMapping(path = "/{id}",  method = RequestMethod.GET)
+    public Auction get(@PathVariable int id) {
+        return auctionDao.getAuctionById(id);
+    }
+
+    @RequestMapping(path = "",  method = RequestMethod.POST)
+    public Auction create(@RequestBody Auction auction) {
+        return auctionDao.createAuction(auction);
+    }
+
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Auction> list() {
+        return auctionDao.getAuctions();
+    }
+
 }
