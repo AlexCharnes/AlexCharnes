@@ -34,9 +34,6 @@ public class AuctionController {
         return auctionDao.createAuction(auction);
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Auction> list() {
-        return auctionDao.getAuctions();
-    }
+    
 
 }
