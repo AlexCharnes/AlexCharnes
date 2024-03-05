@@ -3,9 +3,11 @@ package com.techelevator.temart;
 import com.techelevator.temart.model.AuthenticatedUser;
 import com.techelevator.temart.model.Product;
 import com.techelevator.temart.model.UserCredentials;
+import com.techelevator.temart.model.Wishlist;
 import com.techelevator.temart.services.AuthenticationService;
 import com.techelevator.temart.services.ConsoleService;
 import com.techelevator.temart.services.StoreService;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.util.List;
 
@@ -30,10 +32,11 @@ public class App {
 
     private void run() {
         consoleService.printGreeting();
-        //loginMenu();
-//        if (currentUser != null) {
-          mainMenu();
-//        }
+        loginMenu();
+        if (currentUser != null) {
+            storeService.setCurrentUser(currentUser);
+            mainMenu();
+        }
     }
     private void loginMenu() {
         int menuSelection = -1;
@@ -92,12 +95,39 @@ public class App {
     }
 
 	private void listAllProducts() {
-        // TODO Auto-generated method stub
+        // 1. Get the Products from the API using the StoreService
+        List<Product> products = storeService.getInventory();
+        // 2. Pass the list to the ConsoleService to print it for the user
+        consoleService.ShowAllProducts(products);
+
+        // first get the sku from the user
+        String sku = consoleService.getSkuFromUser();
+        // send the sku to the store service
+        Product selectedProduct = null;
+        try {
+            selectedProduct = storeService.getProductBySku(sku);
+            consoleService.ShowSingleProduct(selectedProduct);
+        } catch (RestClientResponseException e) {
+            if (e.getRawStatusCode() == 404) {
+                // tell the user the product was not found
+                consoleService.productNotFound(sku);
+            } else {
+                // Show the user the error
+                consoleService.errorResponse(e);
+            }
+        }
+
+
 	}
 
 	private void createWishlist() {
-		// TODO Auto-generated method stub
-		
+
+        // 1) Ask the user for the name of the new Wishlist
+        String wishlistName = consoleService.promptForString("Name of new Wishlist >>> ");
+        // 2) Send the Wishlist to the api (server) using a service
+        Wishlist createdWishlist = storeService.crateWishlist(wishlistName);
+        // 3) Tell the user the wishlist was successfully created
+		consoleService.showCreatedWishlist(createdWishlist);
 	}
 
 	private void viewWishlists() {

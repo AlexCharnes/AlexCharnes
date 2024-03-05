@@ -19,7 +19,7 @@ public class StoreServiceTests {
 
     @Test
     public void service_returns_all_products() {
-        List<Product> products = service.getAllProducts();
+        List<Product> products = service.getInventory();
         Assert.assertTrue(products.size() > 0);
     }
 }
