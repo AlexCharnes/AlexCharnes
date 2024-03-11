@@ -1,0 +1,51 @@
+body {   
+    font-family: "Titillium Web", sans-serif;
+    background-color: rgb(241, 148, 221);
+}
+
+h1 {
+    font-size: 48px;
+    color: cornflowerblue;
+    
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #7CD34B;
+}
+
+img {
+    height: 150px;
+}
+
+h1, h2, h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+div{
+    height: 30px;
+}
+
+input, select {
+    width: 200px;
+}
+
+form {
+    background-color: green;
+}
+
+a {
+    font-size: 22px;
+    font-weight: bold;
+    color: yellow;
+
+}
