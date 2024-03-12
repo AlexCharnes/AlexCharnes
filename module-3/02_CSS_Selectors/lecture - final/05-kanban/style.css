@@ -154,22 +154,24 @@ main {
     margin-top: 50px;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 15px;
     height: 15px;
     
 }
 
-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: purple;
 }
 
-body::-webkit-scrollbar-thumb:horizontal {
+*::-webkit-scrollbar-thumb {
+    width: 15px;
+    height: 15px;
     background: orange;
-    border-radius: 10px;
-    width: -100px;
+    border-radius: 25px;
+    border: 1px solid rgb(0,0,0);
 }
 
-body::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
     background: brown;
 }

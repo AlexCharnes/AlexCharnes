@@ -1,0 +1,48 @@
+
+
+
+
+/* Below this line is not related to the grid */
+div.container {
+    height: 100%;
+}
+
+#grid-example {
+    width: 75%;
+    height: 75%;
+    background-color: gray;
+    margin: auto;
+    top: 50px;
+    position: relative;
+}
+
+.box {
+    background-color: darkgrey;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    border: 1px solid black;
+}
+
+.one {
+    background-color: red;
+}
+
+.two {
+    background-color: green;
+}
+
+.three {
+    background-color: blue;
+}
+
+.four {
+    background-color: yellow;
+}
+
+.item {
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
