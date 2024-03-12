@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="infoStyle.css">
+    <title>Sign Up For More</title>
 </head>
 <body>
-    
+    <form action="/signup" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="date-of-birth">Date of Birth</label><br>
+        <input type="date" id="date-of-birth" name="date-of-birth"><br>
+        <label for="favorite-color">Favorite Color:</label><br>
+        <input type="color" id="favorite-color" name="favorite-color"><br>
+        <label for="lucky-number">Lucky Number:</label><br>
+        <input type="number" id="lucky-number" name="lucky-number" required><br>
+
+    </form>
 </body>
 </html>
