@@ -1,0 +1,177 @@
+html {
+    /* Set root font size so we can use rem consistently*/
+    font-size: 16px;
+    /* Set the document to take up all the vertical space */
+    height: 100%;
+}
+
+* {
+    /* Set everything to border box sizing */
+    box-sizing: border-box;
+}
+
+body {
+    /* Set an overall font */
+    font-family: 'Raleway', sans-serif;
+    /* Great a gradient background */
+    background-image: linear-gradient(to bottom, rgb(240, 135, 135),  rgb(159, 159, 246));
+    /* Do not repeat the background */
+    background-repeat: no-repeat;
+    /* Do not scroll the background with the page */
+    background-attachment: fixed;
+
+    /* Keep lists from wrapping */
+    white-space: nowrap;
+}
+
+main#trello-board div.trello-list {
+    /* create multi-columns */
+    display: inline-block;
+    /* Set a fixed width for the list */
+    width: 300px;
+    /* Create a background color for the list */
+    background-color: #ddd;
+    /* Slightly round the corners of the list */
+    border-radius: 2px 3px;
+
+    /* Space between lists */
+    margin-right: 10px;
+    /* Align the tops of the lists */
+    vertical-align: top;
+}
+
+main#trello-board div.trello-list h2 {
+    /* push the text away from the edges*/
+    margin: 8px;
+    /* Keep the font size consistent with the page */
+    font-size: 1rem;
+    /* Make the title bold */
+    font-weight: bold;
+}
+
+main#trello-board div.trello-list ol {
+    margin: 0;
+    padding: 0;
+}
+
+main#trello-board div.trello-list ol > li {
+    /* Remove the numbers */
+    list-style: none;
+    /* Sets the font size relative to the page */
+    font-size: .9rem;
+    /* Creates a background color for the cards */
+    background-color: rgb(250, 241, 241);
+    /* Softens the edges of the cards */
+    border-radius: 1px;
+    /* spaces the cards 10px apart */
+    margin-bottom: 10px;
+    /* puts space around the text in each card */
+    padding: 8px;
+
+    /* Allow text to wrap by overriding the body nowrap */
+    white-space: normal;
+}
+
+main#trello-board div.trello-list ol > li:hover {
+    background-color: rgb(243, 210, 210);
+    color: yellow;
+}
+
+main#trello-board div.trello-list ol > li:last-child {
+    margin-bottom: 0px;
+}
+
+main#trello-board div.trello-list a {
+    /* Take up all the width and make it so we can size it */
+    display: block;
+    /* Remove the underline from the link */
+    text-decoration: none;
+    /* Set the text color and size */
+    color: #6b6969;
+    font-size: .85rem;
+
+    /* Add some spacing */
+    padding: 8px 0px 8px 5px;  /* top right bottom left */
+
+}
+
+main#trello-board div.trello-list a:hover {
+    /* rgba allows the transparency (or alpha) to be set */
+    background-color: rgba(45, 45, 45, 0.1);
+} 
+
+header > h1, 
+header > p {
+    display: inline-block;
+    height: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, .8);
+    border-right: 1px solid rgba(255,255,255,0.5);
+}
+
+header > h1 {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+header > p {
+    font-size: 0.9rem;
+    padding-left: 5px;;
+}
+
+span.label {
+    display: inline-block;
+    vertical-align: top;
+    width: 35px;
+    height: 8px;
+    border-radius: 3px;
+}
+
+span.label.pathway {
+    background-color: red;
+}
+
+span.label.individual {
+    background-color: green;
+}
+
+span.label.pair {
+    background-color: teal;
+}
+
+span.label.general {
+    background-color: orange;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    height: 50px;
+}
+
+main {
+    margin-top: 50px;
+}
+
+*::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+    
+}
+
+*::-webkit-scrollbar-track {
+    background: purple;
+}
+
+*::-webkit-scrollbar-thumb {
+    width: 15px;
+    height: 15px;
+    background: orange;
+    border-radius: 25px;
+    border: 1px solid rgb(0,0,0);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: brown;
+}
