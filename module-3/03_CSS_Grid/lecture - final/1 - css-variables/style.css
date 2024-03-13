@@ -1,3 +1,9 @@
+:root {
+    --standard-element-width: 50vw;
+    --company-text-color: green;
+    --company-outline-color: black;
+    --standard-text-gradient: linear-gradient(lightblue, pink);
+}
 
 h1 {
     color: blue;
@@ -5,29 +11,29 @@ h1 {
 
 section h2 {
     background-color: yellow;
-    color: green;
-    width: 50vw;
+    color: var(--company-text-color);
+    width: var(--standard-element-width);
 }
 
 section > p {
-    color: green;
+    color: var(--company-text-color);
     font-size: 1.5rem;
-    width: 50vw;
+    width: var(--standard-element-width);
 }
 
 section > div {
-    color: green;
+    color: var(--company-text-color);
     font-size: 1.75rem;
-    border: 1px solid black;
+    border: 1px solid var(--company-outline-color);
     padding: 10px;
-    width: 50vw;
+    width: var(--standard-element-width);
 }
 
 section > div > p {
     color: teal;
-    background-image: linear-gradient(lightblue, pink);
+    background-image: var(--standard-text-gradient);
     padding: 5px;
-    width: 50vw;
+    width: var(--standard-element-width);
 }
 
 

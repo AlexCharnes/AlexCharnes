@@ -1,5 +1,71 @@
+div.container {
+    display: grid;
+    grid-template-columns: 2fr 4fr 25px 1fr;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-areas: "header              header       header   header"
+                         "main-content        main-content .        sidebar"
+                         "copyright-notice    footer       footer   footer";
+    /* gap: 10px; */
+    row-gap: 5px;
+    column-gap: 10px;
+    margin: 10px;                
+}
+
+div.item-a {
+    grid-area: header;
+}
+
+div.item-b {
+    grid-area: main-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /*  1fr 1fr */
+    grid-template-areas: "one two" "three four";
+}
+
+div.one {
+    grid-area: one;
+    place-self: center;
+}
+
+div.two {
+    grid-area: two;
+    justify-self: end;
+    align-self: center;
+}
+
+div.three {
+    grid-area: three;
+    justify-self: start;
+    align-self: start;
+}
+
+div.four {
+    grid-area: four;
+    align-self: end;
+}
+
+div.item-c {
+    grid-area: sidebar;
+}
+
+div.item-d {
+    grid-area: footer;
+}
+div.item-e {
+    grid-area: copyright-notice;
+}
 
 
+@media(max-width: 768px) {
+    div.container {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 100px 4fr 1fr 100px;
+        grid-template-areas: "header header"
+                             "main-content main-content"
+                             "sidebar sidebar"
+                             "copyright-notice footer";
+    }
+}
 
 
 /* Below this line is not related to the grid */
@@ -45,4 +111,7 @@ div.container {
     margin: 10px;
     border: 1px solid black;
 }
+
+
+
 
