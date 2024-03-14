@@ -13,9 +13,35 @@ body {
 
 img {
   display: block;
+  
 }
 
 ul {
   margin: 0;
   padding: 0;
 }
+
+aside {
+  position: fixed;
+  border-color: #00ADEE;
+  width: 200px;
+  height: 100%;
+}
+
+a{
+  color:#00ADEE;
+  text-decoration-color: #00ADEE;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+li{
+  text-align: center;
+  border-style: solid;
+  border-color: #00ADEE;
+}
+
+h2{
+  text-decoration-color: #8CC36F;
+}
+
