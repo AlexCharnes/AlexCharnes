@@ -12,8 +12,10 @@ body {
 }
 
 img {
+  width: 120px;
   display: block;
-  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
@@ -37,15 +39,37 @@ a{
   text-decoration: none;
 }
 
+
 li{
   text-align: center;
   border-style: solid;
   border: rgba(0, 173, 238, 0.4) 1px solid;
-  margin:auto;
   list-style-type: none;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  
 }
 
 h2{
   text-decoration-color: #8CC36F;
 }
+
+main{
+  margin-left: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header img{
+  height: 100px;
+  padding-bottom: 10px;
+}
+img.banner{
+  width: 100%;
+}
+
+
 
