@@ -50,3 +50,29 @@ header img {
 #student-picture img{
     border-radius: 50%;
 }
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "header header header"
+                         "main main main"
+                         "info info info"
+                         "footer footer footer";
+    grid-template-rows: 100px 100px 100px 100px;
+    row-gap: 20px;
+    column-gap: 50px;;
+}
+
+#experience-grid{
+    display: grid;
+}
+
+h1#headline{
+    grid-area: header;
+    justify-self: start;
+}
+
+div#student-picture{
+    grid-row: header / main;
+    
+}

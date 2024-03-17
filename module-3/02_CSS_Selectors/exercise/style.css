@@ -13,6 +13,7 @@ body {
 
 img {
   display: block;
+  align-self: center;
   
 }
 
@@ -23,7 +24,8 @@ ul {
 
 aside {
   position: fixed;
-  border-color: #00ADEE;
+  border-right: 1px solid rgba(0, 173, 238, 0.4);
+  
   width: 200px;
   height: 100%;
 }
@@ -38,7 +40,9 @@ a{
 li{
   text-align: center;
   border-style: solid;
-  border-color: #00ADEE;
+  border: rgba(0, 173, 238, 0.4) 1px solid;
+  margin:auto;
+  list-style-type: none;
 }
 
 h2{
