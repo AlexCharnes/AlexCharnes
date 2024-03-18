@@ -58,7 +58,7 @@ main{
                          "info info picture"
                          "profile profile contact"
                          "footer footer footer";
-    grid-template-rows: 100px 100px 100px 100px;
+    /* grid-template-rows: 100px 100px 100px 100px; */
     row-gap: 20px;
     column-gap: 50px;
     align-items: center;
