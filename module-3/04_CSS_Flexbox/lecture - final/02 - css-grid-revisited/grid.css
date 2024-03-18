@@ -17,30 +17,23 @@ div.item-a {
 
 div.item-b {
     grid-area: main-content;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /*  1fr 1fr */
-    grid-template-areas: "one two" "three four";
+    display: flex;
 }
 
 div.one {
-    grid-area: one;
     place-self: center;
 }
 
 div.two {
-    grid-area: two;
-    justify-self: end;
     align-self: center;
+    width: 50%;
 }
 
 div.three {
-    grid-area: three;
-    justify-self: start;
     align-self: start;
 }
 
 div.four {
-    grid-area: four;
     align-self: end;
 }
 
