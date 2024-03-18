@@ -12,6 +12,13 @@
 			return x + y;
         }
 */
+	function sumDouble(x, y){
+		if (x !== y){
+		return x + y}
+		else {
+ 		return(x + y) * 2}
+	}
+	console.log(sumDouble)
 
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
@@ -21,6 +28,17 @@
 		hasTeen(20, 19, 10) → true
 		hasTeen(20, 10, 13) → true
 */
+	function hasTeen(x, y, z){
+		if (x >= 13 && x <=19){
+			return true
+		} else if (y >=13 && y <=19){
+			return true
+		} else if (z >= 13 && z <= 19){
+			return true
+		} else {
+			return false
+		}
+	}
 
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
@@ -30,15 +48,34 @@
 		lastDigit(6, 17) → false
 		lastDigit(3, 113) → true
 */
+function lastDigit(x, y){
+	
+	if (x % 10 === y % 10){
+		return true;
+	} else{
+		return false;
+	}
+}
 
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
     string, otherwise return the empty string.
+	
 
 		seeColor("redxx") → "red"
 		seeColor("xxred") → ""
         seeColor("blueTimes") → "blue"
 */
+let string = "";
+function seeColor(string){
+	if (string.startsWith("red")){
+		return string = "red";
+	} else if (string.startsWith("blue")){
+		return string = "blue"
+	} else{
+		return ""
+	}
+}
 
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, removes
@@ -48,6 +85,16 @@
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
 
+function oddOnly(array){
+	for (let i = array.length - 1; i >= 0; i--){
+		if (array[i] % 2 === 0){
+		array.splice(i, 1)
+		}
+		
+	} return array
+
+}
+
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
     at the end of the string, such as with "edited".
@@ -56,6 +103,13 @@
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+function frontAgain(string){
+	if (string.slice(0, 2) !== string.slice(-2)){
+		return false
+	} else{
+		return true
+	}
+}
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -68,6 +122,20 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+function cigarParty(numberOfCigars, isWeekend){
+	if (numberOfCigars <= 60 && numberOfCigars >= 40){
+		return true
+	} else if (isWeekend === true && numberOfCigars >= 40){
+		return   true
+	} else if(numberOfCigars < 40){
+		return   false
+	} else if (numberOfCigars > 60 && isWeekend === false){
+		return false
+	} else{
+		return false
+	}
+
+}
 
 /*
 8. **fizzBuzz** Given a number, return a value according to the following rules:
@@ -82,6 +150,18 @@ In all other cases return the original number.
 	fizzBuzz(15) → "FizzBuzz"
 	fizzBuzz(8) → 8
 */
+function fizzBuzz(int){
+	if (int % 3 === 0 && int % 5 === 0){
+		return 'FizzBuzz'
+	} else if( int % 3 === 0){
+		return 'Fizz'
+	} else if (int % 5 === 0){
+		return 'Buzz'
+	} else {
+		return int
+	}
+
+}
 
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
@@ -91,6 +171,15 @@ In all other cases return the original number.
 	filterEvens([2, 4, 6]) → [2, 4, 6]
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
+function filterEvens(arr){
+	let array = []
+	for (let i = 0; i <= arr.length; i++){
+		if (arr[i] % 2 === 0){
+			array.push(arr[i])
+		}
+		
+	}return array
+}
 
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
@@ -99,6 +188,15 @@ In all other cases return the original number.
 	filterBigNumbers([3, 2, 7, 1, -100, -120]) → []
 	filterBigNumbers([]) → []
 */
+function filterBigNumbers(arr){
+	let array = []
+	for (let i = 0; i <= arr.length; i++){
+		if (arr[i] >= 100){
+			array.push(arr[i])
+		}
+		
+	}return array
+}
 
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
@@ -107,6 +205,15 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+function filterMultiplesOfX(arr, x){
+	let array = []
+	for (let i = 0; i <= arr.length; i++){
+		if (arr[i] % x == 0){
+			array.push(arr[i])
+		}
+		
+	}return array
+}
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -120,3 +227,13 @@ firstName, lastName, and age. Populate the properties with your values.
 		age
 	}
 */
+function createObject(){
+	const person = {
+		firstName: '',
+		lastName: '',
+		age: 31,
+	}
+	person.firstName = "Alex"
+	person.lastName = "Charnes"
+	return person
+}
