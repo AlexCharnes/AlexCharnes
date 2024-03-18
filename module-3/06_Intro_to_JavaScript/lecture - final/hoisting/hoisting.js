@@ -4,7 +4,7 @@ showMessage();
 
 // variable declaration is hoisted - this is one of the reasons we DON'T USE VAR
 // let and const are not hoisted!!
-var message;
+let message;
 
 // simple functions are hoisted
 function showMessage() {

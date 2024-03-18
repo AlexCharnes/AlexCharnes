@@ -21,6 +21,13 @@
 		hasTeen(20, 19, 10) → true
 		hasTeen(20, 10, 13) → true
 */
+function hasTeen(num1, num2, num3) {
+
+	if ((num1 >= 13 && num1 <= 19) || (num2 >= 13 && num2 <= 19) || (num3 >= 13 && num3 <= 19)) {
+		return true;
+	}
+	return false;
+}
 
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
