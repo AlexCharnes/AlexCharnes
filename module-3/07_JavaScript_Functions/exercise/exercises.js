@@ -77,6 +77,11 @@ function addAll(...number){
  * words and returns them as a new array. Use the `map` function.
  */
 
+function makeHappy(){
+    const happyAtTheStart = arr.map(arr => {
+        return newArr = 'Happy ' + arr
+    })
+}
 /*
  * Write and document a function called getFullAddressesOfProperties
  * that takes an array of JavaScript objects. Each object contains the

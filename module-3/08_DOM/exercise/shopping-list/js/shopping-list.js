@@ -1,7 +1,7 @@
 // add pageTitle
 
 // add groceries
-
+let groceryList = {"milk", "eggs", "bacon", "bread", "cereal", "sausage", "peppers", "onion", "cilantro", "heavy cream"}
 /**
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
