@@ -67,6 +67,9 @@ function makeNumber(first, second){
  * @param {...number} num a series of numbers to add together
  * @returns {number} the sum of all the parameters (or arguments)
  */
+function addAll(...number){
+    return numbers.reduce((a, b) => a + b)
+}
 
 /*
  * Write and document a function called makeHappy that takes
