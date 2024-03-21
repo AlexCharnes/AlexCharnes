@@ -59,12 +59,47 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-// Set the product reviews page title.
-setPageTitle();
-// Set the product reviews page description.
-setPageDescription();
-// Display all of the product reviews on our page.
-displayReviews();
+document.addEventListener('DOMContentLoaded', () => {
+  // Set the product reviews page title.
+  setPageTitle();
+  // Set the product reviews page description.
+  setPageDescription();
+  // Display all of the product reviews on our page.
+  displayReviews();
+
+  const desc = document.querySelector('p.description');
+  desc.addEventListener('click', (event) => {
+    toggleDescriptionEdit(event.target);
+  });
+
+  const editField = document.getElementById('inputDesc');
+  editField.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      // save the changes
+      exitDescriptionEdit(event.target, true);
+    } else if (event.key === 'Escape') {
+      // cancel the changes
+      exitDescriptionEdit(event.target, false);
+    }
+  });
+
+  editField.addEventListener('mouseleave', (event) => {
+      // cancel the changes
+      exitDescriptionEdit(event.target, false);
+  });
+
+  document.getElementById('btnToggleForm').addEventListener('click', () => {
+    showHideForm();
+  });
+
+  document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    saveReview();
+  });
+
+});
+
+
 
 /**
  * Hide the description and show the text box.
@@ -129,4 +164,19 @@ function resetFormValues() {
 /**
  * Save the review that was added using the add review form.
  */
-function saveReview() {}
+function saveReview() {
+  // Get the values out of the form and build a review object
+  const newReview = {
+    reviewer: document.getElementById('name').value,
+    title: document.getElementById('title').value,
+    review: document.getElementById('review').value,
+    rating: Number(document.getElementById('rating').value)
+  };
+ 
+  // add the review object to the reviews array
+  reviews.push(newReview);
+  // call the method to display the review to update the DOM
+  displayReview(newReview);
+  // call showHideForm() to hide the form and finish the add
+  showHideForm();
+}
