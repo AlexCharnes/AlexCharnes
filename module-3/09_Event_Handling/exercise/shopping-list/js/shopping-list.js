@@ -36,3 +36,44 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+document.addEventListener('DOMContentLoaded', ()=>{
+
+setPageTitle();
+
+displayGroceries();
+
+
+document.querySelector('ul').addEventListener('click', event =>{
+  
+  event.target.classList.add('completed')
+})
+
+document.querySelector('ul').addEventListener('dblclick', event =>{
+  
+  event.target.classList.remove('completed')
+})
+
+document.querySelector('a.btn').addEventListener('click', event =>{
+  const listGrocery = document.querySelectorAll('li');
+  
+  if(document.querySelector('a.btn').innerText !== 'Mark All Incomplete'){
+  listGrocery.forEach(item =>{
+    item.classList.add('completed');
+  })
+  const button = document.querySelector('a.btn');
+  button.innerText = 'Mark All Incomplete';
+  } 
+  if (document.querySelector('a.btn').innerText === 'Mark All Incomplete'){
+    listGrocery.forEach(item =>{
+      item.classList.remove('completed')
+    })
+    // const button = document.querySelector('a.btn');
+    // button.innerText = 'Mark All Complete';
+  }
+})
+
+
+
+
+
+})
