@@ -29,7 +29,14 @@ function displayGroceries() {
  * to every list item and add the class completed to each one
  */
 //item.classList.add("completed");
-function markCompleted() {}
+
+function markCompleted() {
+  const mainList = document.querySelectorAll('#groceries li')
+
+  mainList.forEach( item => {
+    item.classList.add('completed')
+  })
+}
 
 setPageTitle();
 
