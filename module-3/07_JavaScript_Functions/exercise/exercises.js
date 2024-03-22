@@ -40,7 +40,7 @@ function isAdmitted(gpa, sat, isRecommended){
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
-const filteredArray = unfilteredArray.filter()
+
 function useParameterToFilterArray(filterFunction){
     const filteredArray = unfilteredArray.filter(filterFunction);
     return filteredArray;
