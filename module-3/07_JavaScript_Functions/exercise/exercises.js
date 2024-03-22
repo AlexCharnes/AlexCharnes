@@ -39,8 +39,11 @@ function isAdmitted(gpa, sat, isRecommended){
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+const filteredArray = unfilteredArray.filter()
 function useParameterToFilterArray(filterFunction){
-    return filterFunction(unfilteredArray)
+    const filteredArray = unfilteredArray.filter(filterFunction);
+    return filteredArray;
 
 }
 
@@ -57,7 +60,8 @@ function useParameterToFilterArray(filterFunction){
  * @returns {number} the resultant number
  */
 function makeNumber(first, second){
-    return Number(first + second);
+    
+    return parseInt(first + second)
 }
 
 /**
@@ -68,7 +72,9 @@ function makeNumber(first, second){
  * @returns {number} the sum of all the parameters (or arguments)
  */
 function addAll(...number){
-    return numbers.reduce((a, b) => a + b)
+    
+    
+    return number.reduce((sum, current) => sum + current, 0);
 }
 
 /*
@@ -77,10 +83,11 @@ function addAll(...number){
  * words and returns them as a new array. Use the `map` function.
  */
 
-function makeHappy(){
-    const happyAtTheStart = arr.map(arr => {
-        return newArr = 'Happy ' + arr
+function makeHappy(array){
+    const happyAtTheStart = array.map(arr => {
+        return 'Happy ' + arr;
     })
+    return happyAtTheStart;
 }
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -102,6 +109,13 @@ function makeHappy(){
  *
  * Use `map` and an anonymous function.
  */
+function getFullAddressesOfProperties(array){
+    const fullAddress = array.map(arr=>{
+        return arr.streetNumber + ' ' + arr.streetName + ' ' + arr.streetType 
+        + ' ' + arr.city + ' ' + arr.state + ' ' + arr.zip
+    })
+    return fullAddress;
+}
 
 /** 
  * Write and document a function called findLargest that uses `forEach`

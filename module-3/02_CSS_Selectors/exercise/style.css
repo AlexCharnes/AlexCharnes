@@ -32,12 +32,14 @@ aside {
   height: 100%;
 }
 
+
 a{
   color:#00ADEE;
   text-decoration-color: #00ADEE;
   font-weight: bold;
   text-decoration: none;
 }
+
 
 
 li{
@@ -51,10 +53,11 @@ li{
   margin-right: auto;
   padding: 10px;
   
+  
 }
 
 h2{
-  text-decoration-color: #8CC36F;
+  color: #8CC36F;
 }
 
 main{
@@ -68,7 +71,23 @@ header img{
   padding-bottom: 10px;
 }
 img.banner{
-  width: 100%;
+  width: 100vw;
+}
+
+i {
+  margin: 10px;
+}
+
+section {
+  display: inline-block;
+  flex-wrap: nowrap;
+}
+
+div {
+  margin: 10px;
+  
+  border-style: solid;
+  border: rgba(170, 239, 135, 0.8)
 }
 
 
