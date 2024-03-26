@@ -36,21 +36,39 @@
       </div>
     </div>
 
-    <div
-      class="review"
-      v-bind:class="{ favorited: review.favorited }"
-      v-for="review in reviews"
-      v-bind:key="review.id"
-    >
+    <!-- <form>
+      <div class="form-element">
+        <label for="reviewer">Name:</label>
+        <input id="reviewer" type="text" />
+      </div>
+      <div class="form-element">
+        <label for="title">Title:</label>
+        <input id="title" type="text" />
+      </div>
+      <div class="form-element">
+        <label for="rating">Rating:</label>
+        <select id="rating">
+          <option value="1">1 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+      </div>
+      <div class="form-element">
+        <label for="review">Review:</label>
+        <textarea id="review"></textarea>
+      </div>
+      <input type="submit" value="Save">
+      <input type="button" value="Cancel">
+    </form> -->
+
+
+    <div class="review" v-bind:class="{ favorited: review.favorited }" v-for="review in reviews" v-bind:key="review.id">
       <h4>{{ review.reviewer }}</h4>
       <div class="rating">
-        <img
-          src="../assets/star.png"
-          v-bind:title="review.rating + ' Star Review'"
-          class="ratingStar"
-          v-for="n in review.rating"
-          v-bind:key="n"
-        />
+        <img src="../assets/star.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar"
+          v-for="n in review.rating" v-bind:key="n" />
       </div>
       <h3>{{ review.title }}</h3>
 
@@ -149,25 +167,25 @@ export default {
       return oneStarReviews.length;
     },
     numberOfTwoStarReviews() {
-      const twoStarReviews =  this.reviews.filter((review) => {
+      const twoStarReviews = this.reviews.filter((review) => {
         return review.rating === 2;
       });
       return twoStarReviews.length;
     },
     numberOfThreeStarReviews() {
-      const threeStarReviews =  this.reviews.filter((review) => {
+      const threeStarReviews = this.reviews.filter((review) => {
         return review.rating === 3;
       });
       return threeStarReviews.length;
     },
     numberOfFourStarReviews() {
-      const fourStarReviews =  this.reviews.filter((review) => {
+      const fourStarReviews = this.reviews.filter((review) => {
         return review.rating === 4;
       });
       return fourStarReviews.length;
     },
     numberOfFiveStarReviews() {
-      const fiveStarReviews =  this.reviews.filter((review) => {
+      const fiveStarReviews = this.reviews.filter((review) => {
         return review.rating === 5;
       });
       return fiveStarReviews.length;
