@@ -228,6 +228,7 @@ export default {
   padding: 1rem;
   margin: 10px;
 }
+
 .review p {
   margin: 20px;
 }
@@ -246,16 +247,27 @@ export default {
 
 .form-element label {
   display: block;
+  font-size: 1.2rem;
+  margin-bottom: 2px;
 }
 
 .form-element select {
   height: 30px;
   width: 300px;
+  border-radius: 5px;
+}
+
+form input[type=text] {
+  width: 300px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px black solid;
 }
 
 .form-element textarea {
   height: 60px;
   width: 300px;
+  border-radius: 5px;
 }
 
 form input[type=button] {
@@ -265,6 +277,25 @@ form input[type=button] {
 form input[type=submit] {
   width: 100px;
   margin-right: 10px;
+}
+
+form input[type=button],
+form input[type=submit] {
+  width: 150px;
+  height: 25px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px black solid;
+}
+
+form input[type=button]:hover,
+form input[type=submit]:hover {
+  cursor: pointer;
+}
+
+form>div:last-of-type {
+  margin-bottom: 15px;
 }
 </style>
 
