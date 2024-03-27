@@ -64,26 +64,26 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button @click="showForm = !showForm">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="showForm">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" />
+        <input v-model="newUser.firstName" type="text" id="firstName" name="firstName" />
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" />
+        <input v-model="newUser.lastName" type="text" id="lastName" name="lastName" />
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
+        <input v-model="newUser.username" type="text" id="username" name="username" />
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" id="emailAddress" name="emailAddress" />
+        <input v-model="newUser.emailAddress" type="text" id="emailAddress" name="emailAddress" />
       </div>
-      <button type="submit" class="btn save">Save User</button>
+      <button type="button" class="btn save" @click="addUser(newUser, users)">Save User</button>
     </form>
   </div>
 </template>
@@ -92,6 +92,7 @@
 export default {
   data() {
     return {
+      showForm: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -163,6 +164,18 @@ export default {
   methods: {
     getNextUserId() {
       return this.nextUserId++;
+    },
+
+    addUser(newUser) {
+      let addedUser = {...newUser};
+      addedUser.id = this.getNextUserId();
+      this.users.push(addedUser);
+      newUser.firstName = "";
+      newUser.lastName = "";
+      newUser.emailAddress = "";
+      newUser.username = "";
+
+      
     }
   },
   computed: {
