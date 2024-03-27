@@ -57,10 +57,29 @@ export function createStore() {
       ],
     },
     getters: {
-
+      getListOfReviews(state) {
+        return state.reviews;
+      },
+      getCurrentFilter(state) {
+        return state.filter;
+      }
     },
     mutations: {
+      FLIP_FAVORITED(state, reviewToChange) {
+        reviewToChange.favorited = !reviewToChange.favorited
+      },
+      UPDATE_FILTER(state, newFilter) {
+        state.filter = newFilter;
+      },
+      ADD_NEW_REVIEW(state, newReview) {
+        // The part with the newReviewId is
+        // to mimic a database.  It will be replaced
+        // by the primary key.
+        state.nextReviewId++;
+        newReview.id = state.nextReviewId;
 
+        state.reviews.unshift(newReview);
+      }
     },
     actions: {
     },

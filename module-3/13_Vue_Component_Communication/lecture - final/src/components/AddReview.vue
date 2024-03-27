@@ -1,16 +1,57 @@
 <template>
-  <h1>Add Review</h1>
+  <a id="show-form-button" href="#" v-on:click.prevent="showForm = true" v-if="showForm === false">Show Form</a>
+
+  <form v-on:submit.prevent="addNewReview()" v-show="showForm === true">
+    <div class="form-element">
+      <label for="reviewer">Name:</label>
+      <input id="reviewer" type="text" v-model.trim="newReview.reviewer" />
+    </div>
+    <div class="form-element">
+      <label for="title">Title:</label>
+      <input id="title" type="text" v-model.trim="newReview.title" />
+    </div>
+    <div class="form-element">
+      <label for="rating">Rating:</label>
+      <select id="rating" v-model.number="newReview.rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
+    </div>
+    <div class="form-element">
+      <label for="review">Review:</label>
+      <textarea id="review" v-model="newReview.review"></textarea>
+    </div>
+    <input type="submit" value="Save">
+    <input type="button" value="Cancel" v-on:click="resetForm()">
+  </form>
 </template>
 
 <script>
 export default {
   data() {
     return {
-
+      newReview: {},
+      showForm: false,
     };
   },
+  computed: {
+    isFormValid() {
+      return this.newReview.reviewer && this.newReview.title
+        && this.newReview.rating && this.newReview.review;
+    }
+  },
   methods: {
-
+    addNewReview() {
+      this.$store.commit('ADD_NEW_REVIEW', this.newReview);
+      this.resetForm();
+    },
+    resetForm() {
+      this.newReview = {};
+      this.showForm = false;
+    },
   },
 };
 </script>

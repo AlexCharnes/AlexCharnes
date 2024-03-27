@@ -1,22 +1,37 @@
 <template>
   <div class="main">
-    <ProductReview />
+
 
     <!-- Title and Description -->
+    <h2>Product Reviews for {{ $store.state.name }}</h2>
+    <p class="description">{{ $store.state.description }}</p>
     <!-- div.well-display -->
+    <div class="well-display">
       <!-- Average Summary -->
+      <AverageSummary  />
       <!-- Star Summaries -->
+      <StarSummary v-for="n in 5" v-bind:key="n" v-bind:rating="n" />
+    </div>
     <!-- Add Review -->
+    <AddReview /> 
     <!-- Review List -->
+    <ReviewList />
+
   </div>
 </template>
 
 <script>
-import ProductReview from './components/ProductReview.vue'
+import AverageSummary from './components/AverageSummary.vue';
+import StarSummary from './components/StarSummary.vue';
+import ReviewList from './components/ReviewList.vue';
+import AddReview from './components/AddReview.vue';
 
 export default {
   components: {
-    ProductReview
+    AverageSummary,
+    StarSummary,
+    ReviewList,
+    AddReview
   }
 };
 </script>
