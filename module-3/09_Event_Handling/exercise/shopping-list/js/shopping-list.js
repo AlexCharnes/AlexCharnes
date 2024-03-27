@@ -52,25 +52,51 @@ document.querySelector('ul').addEventListener('dblclick', event =>{
   
   event.target.classList.remove('completed')
 })
+const listGrocery = document.querySelectorAll('li');
+let isCompleted = false;
 
 document.querySelector('a.btn').addEventListener('click', event =>{
-  const listGrocery = document.querySelectorAll('li');
   
-  if(document.querySelector('a.btn').innerText !== 'Mark All Incomplete'){
-  listGrocery.forEach(item =>{
-    item.classList.add('completed');
-  })
-  const button = document.querySelector('a.btn');
-  button.innerText = 'Mark All Incomplete';
-  } 
-  if (document.querySelector('a.btn').innerText === 'Mark All Incomplete'){
-    listGrocery.forEach(item =>{
-      item.classList.remove('completed')
-    })
-    // const button = document.querySelector('a.btn');
-    // button.innerText = 'Mark All Complete';
+  console.log('inside click event')
+  
+  
+//   if(isCompleted === true){
+//    // console.log('inside if')
+//   listGrocery.forEach(item =>{
+//     item.classList.add('completed');
+//   })
+//   const button = document.querySelector('a.btn');
+//   button.innerText = 'Mark All Incomplete';
+  
+//   } else  {
+//     listGrocery.forEach(item =>{
+//       item.classList.remove('completed')
+      
+//     })
+//     const button = document.querySelector('a.btn');
+//     button.innerText = 'Mark All Complete';
+    
+//   }
+//   isCompleted = !isCompleted;
+// })
+const listGrocery = document.querySelectorAll('li');
+let isCompleted = false;
+
+document.querySelector('a.btn').addEventListener('click', event => {
+  if (!isCompleted) {
+    listGrocery.forEach(item => {
+      item.classList.add('completed');
+    });
+    event.target.innerText = 'Mark All Incomplete';
+  } else {
+    listGrocery.forEach(item => {
+      item.classList.remove('completed');
+    });
+    event.target.innerText = 'Mark All Complete';
   }
-})
+  isCompleted = !isCompleted;
+});
+
 
 
 
