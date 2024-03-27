@@ -1,15 +1,28 @@
 <template>
-  <h1>Star Summary</h1>
+  <div class="well">
+    <span class="amount" v-on:click="updateFilter()">{{ numberOfReviews }}</span>
+    {{ rating }} Star Review{{ numberOfReviews === 1 ? '' : 's' }}
+  </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    rating: Number
+  },
   methods: {
-
+    updateFilter() {
+      this.$store.commit("UPDATE_FILTER", this.rating);
+    }
   },
   computed: {
-
+    numberOfReviews() {
+      const reviews = this.$store.state.reviews;
+      const reviewsWithNumStars = reviews.filter((review) => {
+        return review.rating === this.rating;
+      });
+      return reviewsWithNumStars.length;
+    },
   }
 };
 </script>
@@ -34,5 +47,4 @@ export default {
 .amount:hover {
   cursor: pointer;
 }
-
 </style>

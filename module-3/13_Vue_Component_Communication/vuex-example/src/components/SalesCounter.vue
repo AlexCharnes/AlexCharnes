@@ -16,6 +16,7 @@ export default {
       // that changes the inventory value
       //  commit( 'MUTATION_NAME', ...arguments)
       this.$store.commit('REMOVE_TVS_FROM_INVENTORY', 1);
+      this.$store.state.inventory.tvs -= 1;
     }
   }
 }
