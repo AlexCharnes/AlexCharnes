@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-
+    <header>This is the Page Header</header>
+    <RouterView />
+    <footer>This is the Page Footer</footer>
   </div>
 </template>
 
