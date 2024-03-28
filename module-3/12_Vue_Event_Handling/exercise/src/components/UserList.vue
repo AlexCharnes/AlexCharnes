@@ -66,7 +66,7 @@
 
     <button @click="showForm = !showForm">Add New User</button>
 
-    <form id="frmAddNewUser" v-show="showForm">
+    <form id="frmAddNewUser" v-show="showForm" @submit.prevent="addUser(newUser)">
       <div class="field">
         <label for="firstName">First Name:</label>
         <input v-model="newUser.firstName" type="text" id="firstName" name="firstName" />
@@ -83,7 +83,7 @@
         <label for="emailAddress">Email Address:</label>
         <input v-model="newUser.emailAddress" type="text" id="emailAddress" name="emailAddress" />
       </div>
-      <button type="button" class="btn save" @click="addUser(newUser, users)">Save User</button>
+      <button type="submit" class="btn save" >Save User</button>
     </form>
   </div>
 </template>
@@ -174,8 +174,6 @@ export default {
       newUser.lastName = "";
       newUser.emailAddress = "";
       newUser.username = "";
-
-      
     }
   },
   computed: {
