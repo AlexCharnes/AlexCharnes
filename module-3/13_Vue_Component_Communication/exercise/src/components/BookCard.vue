@@ -3,8 +3,11 @@
     <h2 class = "book-title">{{ book.title }}</h2>
     <h3 class = "book-author">Author: {{ book.author }}</h3>
     <img class = "book-image" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="Book Cover">
+
+
     <button class="mark-read" v-if="!book.read" @click="toggleReadStatus(true)">Mark Read</button>
     <button class="mark-read" v-if="book.read" @click="toggleReadStatus(false)">Mark Unread</button>
+    
   </div>
 </template>
 
