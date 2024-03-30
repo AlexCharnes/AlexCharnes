@@ -55,43 +55,21 @@ export default {
 
   computed: {
     filteredList() {
-      let filteredUsers = this.users;
-      if (this.search.firstName != "") {
-        filteredUsers = filteredUsers.filter((user) =>
-          user.firstName
-            .toLowerCase()
-            .includes(this.search.firstName.toLowerCase())
-        );
-      }
-      if (this.filter.lastName != "") {
-        filteredUsers = filteredUsers.filter((user) =>
-          user.lastName
-            .toLowerCase()
-            .includes(this.filter.lastName.toLowerCase())
-        );
-      }
-      if (this.filter.username != "") {
-        filteredUsers = filteredUsers.filter((user) =>
-          user.username
-            .toLowerCase()
-            .includes(this.filter.username.toLowerCase())
-        );
-      }
-      if (this.filter.emailAddress != "") {
-        filteredUsers = filteredUsers.filter((user) =>
-          user.emailAddress
-            .toLowerCase()
-            .includes(this.filter.emailAddress.toLowerCase())
-        );
-      }
-      if (this.filter.status != "") {
-        filteredUsers = filteredUsers.filter((user) =>
-          user.status === this.filter.status
-        );
-      }
-      return filteredUsers;
-    }
+      const firstNameSearch = this.search.firstName.toLowerCase();
+      const lastNameSearch = this.search.lastName.toLowerCase();
+      const usernameSearch = this.search.username.toLowerCase();
+      const emailAddressSearch = this.search.emailAddress.toLowerCase();
+      const statusSearch = this.search.status.toLowerCase();
+      return this.users.filter( user => {
+        const firstNameMatch = user.firstName.toLowerCase().includes(firstNameSearch);
+        const lastNameMatch = user.lastName.toLowerCase().includes(lastNameSearch);
+        const usernameMatch = user.username.toLowerCase().includes(usernameSearch);
+        const emailMatch = user.emailAddress.toLowerCase().includes(emailAddressSearch);
+        const statusMatch = user.status.toLowerCase().includes(statusSearch);
+        return firstNameMatch && lastNameMatch && usernameMatch && emailMatch && statusMatch;
+      });
   }
+}
 }
 </script>
 
