@@ -69,6 +69,7 @@ export default {
         return firstNameMatch && lastNameMatch && usernameMatch && emailMatch && statusMatch;
       });
   }
+  
 }
 }
 </script>
