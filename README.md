@@ -1,31 +1,31 @@
 # README
 
-## Weclome to Java Blue Cohort 22
+Tech Elevator Coding Bootcamp Projects
+Welcome to my Tech Elevator Coding Bootcamp Projects repository! Here, you'll find a collection of the projects I've completed during my time at Tech Elevator, an immersive coding bootcamp.
 
-### IMPORTANT LINKS
+About Tech Elevator
+Tech Elevator is a top-ranked coding bootcamp that offers intensive, full-stack programming courses designed to prepare students for careers in software development. With a focus on hands-on learning and real-world applications, Tech Elevator equips students with the skills and knowledge needed to succeed in the tech industry.
 
-Bootcamp OS (Materials, Quizzes, Exercises, and Scores)  
-<http://lms.techelevator.com/>
+Projects
+1. Candy Store Application
+Description: This is an app created in Java that serves as a vending machine for candy.
 
-### GETTING NEW MATERIAL
+2. TEnmo Currency Exchange Application
+Description: This is a currency exchange application that I created in Java and SQL.
 
-Run these commands in BASH in the root of your student code folder
+3. Brewery Finder Website (Final Capstone)
+Description: Brewery finder website that allows you to explore new breweries and review beers. Full stack (Java, JavaScript, SQL, Postgres, Vue3, Postman).
 
-1. `git add -A`
-2. `git commit -m "comment"`
-3. `git pull upstream main`
+Getting Started
+To explore these projects further or run them locally, follow these steps:
 
-### SUBMITTING INDIVIDUAL WORK
+Clone the repository to your local machine using git clone.
+Navigate to the project directory.
+Follow the instructions provided in each project's README file to set up and run the project locally.
+Contributing
+If you have any suggestions for improvements or would like to contribute to any of the projects, feel free to open an issue or submit a pull request. Contributions are always welcome!
 
-Run these commands in BASH in the root of your student code folder
+Contact
+If you have any questions about the projects or would like to connect, you can reach me at [your@email.com].
 
-1. `git add -A`
-2. `git commit -m "comment"`
-3. `git push origin main`
-
-Watch the output for errors and messages!
-
-
-## Copyright
-
-Per the Acknowledgment of Liability Intellectual Property Ownership Agreement, all materials, lectures, and exercises delivered by Tech Elevator are solely owned by Tech Elevator, and you make no claim to any right to distribute or profit from the content herein. Tech Elevator retains all rights, title and interest in and to all related information, content, data, exams, materials, software, and all copyrights, patent rights, trademark rights and other proprietary rights therein. All rights not expressly granted by Tech Elevator to you are expressly reserved to Tech Elevator.
+Happy coding!
